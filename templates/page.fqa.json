@@ -1,0 +1,15 @@
+{
+    "sections":{
+        "title-background":
+        {
+            "type": "title-background"
+        },
+        "fqa":{
+            "type": "fqa"
+        }
+    },
+    "order":[
+        "title-background",
+        "fqa"
+    ]
+}

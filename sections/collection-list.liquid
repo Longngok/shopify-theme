@@ -1,0 +1,43 @@
+<div class="container padding-ver-40 lg:padding-ver-100">
+  <h2 class="h1 l-spacing t-transf--uc t-align--center mb-25 lg:mb-45 fw-600">
+    {{ section.settings.heading }}
+  </h2>
+  <div class="d-grid grid-layout2 gap-15 lg:gap-20">
+    {% for collection in collections -%}
+      <div class="d-grid__item width-100">
+        <div class="card p-relative wh-100">
+          <img
+            class="card-img wh-100 collection__mh bg-style"
+            src="{{ collection.featured_image | image_url }}"
+            alt="">
+          <div class="card-body d-grid p-item--center p-absolute left-0 right-0 bottom-10 lg:bottom-30">
+            <a class="btn btn-wh btn-secondary btn-border--none padding-13 max-width-125 width-100 t-decor--none t-align--center t-transf--uc" href="{{ collection.url }}">
+              {{ collection.title }}
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "All Collections",
+    "tag": "section",
+    "class": "shop-by",
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "heading",
+        "label": "Heading",
+        "default": "All collections"
+      }
+    ],
+    "presets": [
+      {
+        "name": "All Collections"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,34 @@
+{% style %}
+  .bg-img {
+    background-image: url('{{ section.settings.background | image_url }}');
+  }
+{% endstyle %}
+
+<div class="container padding-30-0 lg:padding-151">
+  <h1 class="h1 t-transf--uc fw-600 c-secondary mb-5">
+    {{ collection.title }}
+  </h1>
+  <p class="c-grey2 width-50pc lg:width-40pc">
+    {{ section.settings.description }}
+  </p>
+</div>
+
+{% schema %}
+  {
+    "name": "Banner",
+    "tag": "section",
+    "class": "bg-img bg-style bc-primary",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "background",
+        "label": "Background img"
+      }, {
+        "type": "textarea",
+        "id": "description",
+        "label": "Banner description",
+        "default": "Text"
+      }
+    ]
+  }
+{% endschema %}

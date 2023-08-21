@@ -1,0 +1,85 @@
+<div class="d-flex j-content--sb a-item--center padding-15 lg:padding-20-50 p-relative bc-secondary">
+  <a class="d-iblock t-decor--none" href="{{ routes.root_url }}">
+    {% if section.settings.logo != blank %}
+      <img
+        class="logo-size lg:logo-size bg-style"
+        src="{{ section.settings.logo | image_url }}"
+        alt="{{ shop.name }}">
+    {%- else -%}
+      <span class="h1 c-primary">{{ shop.name }}</span>
+    {% endif %}
+  </a>
+  <nav class="p-absolute lg:p-static width-100 lg:width-fit top-70 left-0 dropdown-menu z-index-100">
+    <ul class="l-style--none d-flex flex-cl lg:j-content--center lg:d-flex-row gap-30 md:gap-40 lg:gap-50 padding-30-15 lg:padding-0 bc-secondary">
+      {% for link in section.settings.menu.links -%}
+        <li class="main-item">
+          <a class="d-iblock t-decor--none h5 c-primary fw-400 t-transf--uc p-relative" href="{{ link.url }}">
+            {{ link.title }}
+          </a>
+          {% if link.links.size > 0 %}
+            <ul class="lg:p-absolute dropdown-child l-style--none">
+              {% for child_link in link.links %}
+                <li class="menu-link">
+                  <a class="d-iblock t-decor--none c-primary" href="{{ child_link.url }}">{{ child_link.title }}</a>
+
+                  {% if child_link.links.size > 0 %}
+                    <ul class="dropdown-grandchild l-style--none">
+                      {% for grandchild_link in child_link.links %}
+                        <li class="menu-link">
+                          <a class="d-iblock t-decor--none c-primary" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+  <div class="d-flex gap-20 lg:gap-25 c-primary">
+    <a href="{{ routes.search_url }}" class="btn btn-link btn-border--none max-wh-1">
+      {% render 'icon-search' %}
+    </a>
+    <button class="btn btn-link btn-border--none max-wh-1">
+      {% render 'icon-heart' %}
+    </button>
+    <a href="{{ routes.account_url }}" class="btn btn-link btn-border--none max-wh-1">
+      {% render 'icon-user' %}
+    </a>
+    {% capture icon_cart_content %}
+      {% render 'icon-cart' %}
+    {% endcapture %}
+    {{ icon_cart_content | link_to: routes.cart_url, class: 'btn btn-link btn-border--none max-wh-1' }}
+    <div
+      id="togglebar"
+      class=" d-flex flex-cl toggle lg:d-none wh-20"
+      onclick="togglebar()"
+      style="gap: 0.9rem;">
+      <div class="bar1 wh-100"></div>
+      <div class="bar2 wh-100"></div>
+      <div class="bar3 wh-100"></div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Header",
+    "class": "border-grey6",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "default": "main-menu",
+        "label": "header menu"
+      }, {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Image"
+      }
+    ]
+  }
+{% endschema %}

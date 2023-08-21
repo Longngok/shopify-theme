@@ -1,0 +1,121 @@
+{{ 'cart.css' | asset_url | stylesheet_tag }}
+{%- if cart != empty -%}
+  <div class="container padding-ver-40 lg:padding-ver-100">
+    <div class="d-flex j-content--sb a-item--center mb-30">
+      <h2 class="h1  c-primary t-transf--uc t-align--center">Your cart</h2>
+      <a class="c-primary" href="{{ section.settings.link }}">Continue shopping</a>
+    </div>
+    <form action="" class="cart-items">
+      <table class="width-100">
+        <thead>
+          <tr class="mb-18">
+            <th class="t-align--start c-primary">
+              Product
+            </th>
+            <th class="t-align--start c-primary"></th>
+            <th class="t-align--startc-primary">
+              Quantity
+            </th>
+            <th class="t-align--start c-primary">
+              Total
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for item in cart.items -%}
+            {% assign price = item.product.price | split: "," %}
+            <tr>
+              <td class="">
+                <div class="cart__img">
+                  <a class="d-iblock pt-40" href="{{ item.product.url }}">
+                    {% if item.image != blank %}
+                      <img
+                        class="bg-style"
+                        src="{{ item.image | image_url: width: 100 }}"
+                        alt="">
+                    {%- else -%}
+                      {{ 'image' | placeholder_svg_tag }}
+                    {% endif %}
+                  </a>
+                </div>
+              </td>
+              <td class="">
+                <a class="c-primary t-decor--none pt-40" href="">{{ item.product.title }}</a>
+                <p>{{ price.first | money }}</p>
+              </td>
+              <td class="t-align--right price-mobile ">
+                <span class="d-block pt-40">
+                  {% assign total_price = price.first | times: item.quantity %}
+                  {{ total_price | money }}
+                </span>
+              </td>
+              <td class="">
+                <div class="d-flex a-item--center">
+                  <div class="d-flex a-item--center gap-15">
+                    <div class="flex-item">
+                      <div class="quantity-button d-flex border-grey6 height-100 lg:max-width-150">
+                        <button class="minus-btn btn btn-link btn-border--none padding-11-18" onclick="decreaseQuantity(event)">-</button>
+                        <input
+                          class="p quantity-input t-align--center btn-border--none padding-11-auto width-40 lg:width-100pc"
+                          type="number"
+                          value="1"
+                          readonly>
+                        <button class="plus-btn btn btn-link btn-border--none padding-11-18" onclick="increaseQuantity(event)">+</button>
+                      </div>
+                    </div>
+                    <div class="delete-product" style="">
+                      <form action="/cart/change" method="post">
+                        <input
+                          type="hidden"
+                          name="id"
+                          value="{{ item.key }}">
+                        <input
+                          type="hidden"
+                          name="quantity"
+                          value="0">
+                        <button
+                          type="submit "
+                          id="removeLastItemBtn"
+                          style="width: 20px;border: 0;background-color: transparent;">
+                          {% render 'icon-delete' %}</button>
+                      </form>
+                    </div>
+                  </div>
+                </td>
+              </td>
+              <td class="text-align-right price-desktop">
+                <span class="price d-block">
+                  {% assign total_price = price.first | times: item.quantity %}
+                  {{ total_price | money }}
+                </span>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </form>
+  </div>
+{% else %}
+  <div class="ctnr">
+    <h2 class="h1 color-primary mb-30 t--align-center">Your cart is empty</h2>
+    <div class="d-flex jc-center">
+      <a href="" class="btn btn-primary d-iblock">Continue shopping</a>
+    </div>
+
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Item",
+    "tag": "section",
+    "class": "cart",
+    "settings": [
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Shopping button"
+      }
+    ]
+  }
+{% endschema %}

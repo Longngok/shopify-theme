@@ -1,0 +1,256 @@
+{% style %}
+  .img__mb {
+    margin-bottom: {{ section.settings.mb_img | append: 'rem' }}
+    ;
+  }
+  .title__mb {
+    margin-bottom: {{ section.settings.mb_title | append: 'rem'  }}
+  }
+  .des__mb {
+    margin-bottom: {{ section.settings.mb_des | append: 'rem'  }}
+  }
+{% endstyle %}
+<div class="{{ section.settings.background }}">
+  <div class="container padding-ver-40 lg:padding-ver-100">
+    <div class="t-align--center mb-30 lg:mb-50">
+      <h2 class="h1 fw-600 t-transf--uc mb-20 lg:mb-15">
+        {{ section.settings.title | upcase }}
+      </h2>
+      {% if section.settings.description != blank %}
+        <div class="c-grey2">
+          <span>
+            {{ section.settings.description }}
+          </span>
+          <a class="c-grey2" href=" {{ seciton.settings.link }}">
+            {{ section.settings.link_label }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+    <div class="d-grid {{ section.settings.grid-item }} mb-40 lg:mb-80 gap-20">
+      {% for column in section.blocks %}
+        {% if column.settings.background == "bc-grey0" %}
+          <div class="grid__item">
+            <div class="card d-grid p-item--center bc-secondary padding-20-50 lg:padding-50-20">
+              <div class="img__mb">
+                {% if column.settings.box_img != blank %}
+                  <img
+                    class="wh-40"
+                    src="{{ column.settings.box_img | image_url }}"
+                    alt="">
+                {% else %}
+                  {% render 'icon-box' %}
+                {% endif %}
+              </div>
+              <div class="card-body t-align--center d-flex flex-cl a-item--center">
+                <h3 class="h4 title__mb  l-spacing fw-600">
+                  {{ column.settings.box_heading | upcase }}
+                </h3>
+                <p class="c-grey2 des__mb">
+                  {{ column.settings.box_description }}
+                </p>
+                <a class="t-decor--none d-flex gap-10 a-item--center" href="#">
+                  <span class="h5 c-primary l-spacing t-transf--uc l-spacing">
+                    {{ column.settings.button }}
+                  </span>
+                  {% render 'icon-transfer' style"c-primary" %}
+                </a>
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <div class="grid__item">
+            <div class="card d-grid p-item--center bc-secondary padding-20-50 lg:padding-50-20 border-grey6">
+              <div class="img__mb">
+                {% if column.settings.box_img != blank %}
+                  <img
+                    class="wh-40"
+                    src="{{ column.settings.box_img | image_url }}"
+                    alt="">
+                {% else %}
+                  {% render 'icon-box' %}
+                {% endif %}
+              </div>
+              <div class="card-body t-align--center d-flex flex-cl a-item--center">
+                <h3 class="h4 title__mb  l-spacing fwt-600">
+                  {{ column.settings.box_heading | upcase }}
+                </h3>
+                <p class="c-grey2 des__mb">
+                  {{ column.settings.box_description }}
+                </p>
+                {% if column.settings.button != blank %}
+                  <a class="t-decor--none d-flex gap-10 a-item--center" href="#">
+                    <span class="h5 c-primary l-spacing t-transf--uc l-spacing">
+                      {{ column.settings.button }}
+                    </span>
+                    {% render 'icon-next-dark' %}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% if section.settings.hide == false %}
+      <div class="t-align--center">
+        <h3 class="h4 fw-600 mb-15">
+          {{ section.settings.additional_title | upcase }}
+        </h3>
+        <div class="c-grey2">
+          {{ section.settings.additional_des }}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Multi column",
+    "tag": "section",
+    "class": "our-service",
+    "max_blocks": 4,
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "title",
+        "label": "Heading",
+        "default": "Our Service"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Write your paragraph",
+        "default": "Before contacting us we recommend that you read the"
+      },
+      {
+        "type": "text",
+        "id": "link_label",
+        "label": "Write your link content",
+        "default": "frequently asked questions"
+      },
+      {
+        "type": "select",
+        "id": "background",
+        "label": "Section Type",
+        "options": [
+          {
+            "value": "bc-grey0",
+            "label": "Grey"
+          }, {
+            "value": "bc-secondary",
+            "label": "White"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "grid-item",
+        "label": "Column",
+        "options": [
+          {
+            "value": "grid-layout5",
+            "label": "4 colunm"
+          }, {
+            "value": "grid-layout11",
+            "label": "3 colunm"
+          }
+        ]
+      }, {
+        "type": "range",
+        "id": "mb_img",
+        "min": 3,
+        "max": 4,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "Image Margin Bottom",
+        "default": 3
+      }, {
+        "type": "range",
+        "id": "mb_title",
+        "min": 0.5,
+        "max": 2,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "Title Margin Bottom",
+        "default": 0.5
+      }, {
+        "type": "range",
+        "id": "mb_des",
+        "min": 0,
+        "max": 3,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "Description Margin Bottom",
+        "default": 2
+      }, {
+        "type": "checkbox",
+        "id": "hide",
+        "label": "Hide additional infomation",
+        "default": false
+      }, {
+        "type": "inline_richtext",
+        "id": "additional_title",
+        "label": "Additional Title",
+        "default": "CUSTOMER SERVICE OPENING HOURS"
+      }, {
+        "type": "richtext",
+        "id": "additional_des",
+        "label": "Additional Description",
+        "default": "<p>Monday-Friday: 09: 00-18: 30Saturday: 09: 00-12: 30</p>"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "column",
+        "name": "column",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "box_img",
+            "label": "Box image"
+          },
+          {
+            "type": "inline_richtext",
+            "id": "box_heading",
+            "label": "Box heading",
+            "default": "FREE SHIPPING IN ITALY"
+          },
+          {
+            "type": "textarea",
+            "id": "box_description",
+            "label": "Box paragraph",
+            "default": "Lorem ipsum dolor sit amet"
+          },
+          {
+            "type": "text",
+            "id": "button",
+            "label": "Enter your label button",
+            "default": "read more"
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": "Input your button link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Multi column",
+        "blocks": [
+          {
+            "type": "column"
+          }, {
+            "type": "column"
+          }, {
+            "type": "column"
+          }, {
+            "type": "column"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,54 @@
+{
+    "sections": {
+        "title":{
+            "type": "title-background"
+        },
+        "multicolumn":{
+            "type": "multicolumn",
+            "blocks": {
+              "column1":{
+                "type": "column",
+                "settings": {
+  
+                }
+              },
+              "column2":{
+                "type": "column",
+                "settings": {
+  
+                }
+              },
+              "column3":{
+                "type": "column",
+                "settings": {
+  
+                }
+              },
+              "column4":{
+                "type": "column",
+                "settings": {
+  
+                }
+              }
+            },
+            "block_order": [
+              "column1",
+              "column2",
+              "column3",
+              "column4"
+            ]
+        },
+        "richtext":{
+            "type": "richtext"
+        },
+        "me-with-text":{
+            "type": "media-with-text"
+        }          
+    },
+    "order": [
+        "title",
+        "multicolumn",
+        "richtext",
+        "me-with-text"
+    ]
+}

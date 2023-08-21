@@ -1,0 +1,221 @@
+<div class="container padding-ver-40 lg:padding-ver-100">
+  <ul class="d-flex mb-40 lg:mb-60 l-style--none">
+    <li class="l-style--none mr-15 ">
+      <a class="p t-transf--uc circle-icon t-decor--none c-grey3" href="{{ routes.root_url }}">Home</a>
+    </li>
+    <span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="5"
+        height="6"
+        viewBox="0 0 5 6"
+        fill="none">
+        <circle
+          cx="2.5"
+          cy="3"
+          r="2.5"
+          fill="#9EA0A8" />
+      </svg>
+    </span>
+    <li class="padding-0-15">
+      <a class="p t-transf--uc circle-icon t-decor--none c-grey3" href="">{{ collections.title }}</a>
+    </li>
+    <span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="5"
+        height="6"
+        viewBox="0 0 5 6"
+        fill="none">
+        <circle
+          cx="2.5"
+          cy="3"
+          r="2.5"
+          fill="#9EA0A8" />
+      </svg>
+    </span>
+    <li class="padding-0-15">
+      <a class="p t-transf--uc circle-icon t-decor--none c-primary" href="">{{ product.title }}</a>
+    </li>
+  </ul>
+  <div class="d-grid grid-layout4 gap-40 md:gap-60 lg:gap-101">
+    <div class="grid-item">
+      <div class="product-detail">
+        <div class="image-container mb-15 lg:mb-20">
+          <img
+            class="wh-100 bg-style"
+            id="large-image"
+            src="{{  product.featured_image | image_url }}"
+            alt="Large Image">
+        </div>
+        <div class="d-flex j-content--center a-item--center gap-13 lg:gap20 p-relative">
+          {% for image in product.images %}
+            <img
+              class="thumbnail wh-100 bg-style"
+              src="{{ image | image_url }}"
+              alt="Thumbnail {{ forloop.index }}"
+              onclick="showImage({{ forloop.index0 }})">
+          {% endfor %}
+          <button class="btn btn-link btn-border--none max-wh-2 p-absolute top-50pc left-10 translatey-10" onclick="previousImage()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="11"
+              height="20"
+              viewBox="0 0 11 20"
+              fill="none">
+              <path
+                d="M9.5 18.5L0.999999 9.5L9.5 1"
+                stroke="#171719"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button class="btn btn-link btn-border--none max-wh-2 p-absolute top-50pc right-10 translatey-10" onclick="nextImage()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="11"
+              height="20"
+              viewBox="0 0 11 20"
+              fill="none">
+              <path
+                d="M1 18.5L9.5 9.5L1 1"
+                stroke="#171719"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="grid-item">
+      <h1 class="h1 fw-600 t-transf--uc mb-10">
+        {{ product.title }}</h1>
+      <span class="h1 d-iblock mb-30 lg:mb-50 c-grey1">
+        {{ product.price | money }}
+      </span>
+      <form method="post" action="/cart/add">
+        <div class="d-flex flex-cl gap-20 mb-30 lg:mb-40">
+          <label class="d-flex j-content--sb">
+            <span class="h4 fw-600 t-transf--uc" style="line-height: normal;">Size</span>
+            <span class="c-grey2 d-flex a-item--center gap-10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none">
+                <path d="M19.8747 5.24473L14.7553 0.125308C14.5882 -0.0417693 14.3183 -0.0417693 14.1512 0.125308L0.125308 14.1512C-0.0417693 14.3183 -0.0417693 14.5882 0.125308 14.7553L5.24473 19.8747C5.4118 20.0418 5.6817 20.0418 5.84877 19.8747L19.8747 5.84877C20.0418 5.6817 20.0418 5.4118 19.8747 5.24473ZM5.54461 18.9665L1.03352 14.4554L4.42219 11.0667L5.96016 12.6047C6.12295 12.7761 6.39713 12.7803 6.56421 12.6133C6.73557 12.4505 6.73985 12.1763 6.57277 12.0092C6.56849 12.0049 6.56849 12.0049 6.56421 12.0006L5.02624 10.467L6.14437 9.34883L8.54343 11.7479C8.71051 11.915 8.98468 11.915 9.14748 11.7436C9.31455 11.5765 9.31455 11.3066 9.14748 11.1396L6.74842 8.74049L7.86655 7.62236L9.40452 9.15605C9.5716 9.32312 9.84149 9.32312 10.0086 9.15605C10.1756 8.98897 10.1756 8.71907 10.0086 8.552L8.4706 7.01831L9.58873 5.90018L11.9878 8.29924C12.1549 8.46632 12.4248 8.46632 12.5918 8.29924C12.7589 8.13216 12.7589 7.86227 12.5918 7.69519L10.1928 5.29613L11.3109 4.178L12.8489 5.71597C13.016 5.88305 13.2859 5.88733 13.4529 5.72025C13.62 5.55317 13.6243 5.28328 13.4572 5.1162C13.4572 5.1162 13.4572 5.1162 13.4529 5.11192L11.9278 3.5611L13.0459 2.44297L15.445 4.84203C15.6121 5.0091 15.882 5.0091 16.0491 4.84203C16.2161 4.67495 16.2161 4.40505 16.0491 4.23798L13.65 1.83892L14.4554 1.03352L18.9665 5.54461L5.54461 18.9665Z" fill="#84848E" />
+              </svg>
+              Find your size
+            </span>
+          </label>
+          <div class="p-relative">
+            <select class="padding-18-20 border-grey6 cus-select width-100">
+              {% for size in product.metafields.global.size %}
+                <option value="{{ size }}">{{ size }}</option>
+              {% endfor %}
+            </select>
+            <svg
+              class="p-absolute select-arrow__position"
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="7"
+              viewBox="0 0 12 7"
+              fill="none">
+              <path
+                d="M11 1L6.30612 6L1 1"
+                stroke="#171719"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+        <div class="d-grid grid-layout7 gap-15">
+          <div class="grid-item">
+            <div class="quantity-button d-flex border-grey6 height-100 lg:max-width-150">
+              <button class="minus-btn btn btn-link btn-border--none padding-11-18" onclick="decreaseQuantity(event)">-</button>
+              <input
+                class="p quantity-input t-align--center btn-border--none padding-11-auto width-100"
+                type="number"
+                value="1"
+                readonly>
+              <button class="plus-btn btn btn-link btn-border--none padding-11-18" onclick="increaseQuantity(event)">+</button>
+            </div>
+          </div>
+          <div class="grid-item">
+            <input
+              type="hidden"
+              name="id"
+              value="{{ product.variants.first.id }}">
+            <input
+              type="submit"
+              value="Add to cart"
+              class="btn btn-secondary border-grey6 padding-13 t-transf--uc wh-100" />
+          </div>
+          <div class="grid-item">
+            <button class="btn btn-secondary border-grey6 padding-15 height-52">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none">
+                <path d="M9.99945 19.167C9.88779 19.167 9.78029 19.122 9.70279 19.0428L1.52945 10.7337C-0.507214 8.66449 -0.507214 5.29616 1.52945 3.22533C2.51779 2.22033 3.83362 1.66699 5.23195 1.66699C6.63112 1.66699 7.94612 2.22033 8.93445 3.22533L9.99945 4.30866L11.0645 3.22533C12.0528 2.22033 13.3678 1.66699 14.767 1.66699C16.1653 1.66699 17.4803 2.22033 18.4686 3.22533C20.5053 5.29533 20.5053 8.66366 18.4686 10.7337L10.2961 19.0428C10.2186 19.122 10.1111 19.167 9.99945 19.167ZM5.23195 2.50033C4.05862 2.50033 2.95445 2.96616 2.12362 3.80949C0.404453 5.55783 0.404453 8.40199 2.12362 10.1487L9.99945 18.1562L17.8753 10.1495C19.5945 8.40199 19.5945 5.55783 17.8753 3.81033C17.0445 2.96616 15.9403 2.50033 14.767 2.50033C13.5928 2.50033 12.4895 2.96616 11.6586 3.80949L10.2961 5.19449C10.1395 5.35366 9.85862 5.35366 9.70195 5.19449L8.33945 3.80949C7.50945 2.96616 6.40612 2.50033 5.23195 2.50033Z" fill="black" />
+              </svg>
+            </button>
+          </div>
+        </form>
+        <form
+          class="grid-item"
+          action="/cart/checkout/{{ product.variants.first.id }}"
+          method="post">
+          <input
+            type="hidden"
+            name="quantity"
+            value="1" />
+          <button type="submit" class="btn btn-primary border-grey6 padding-13-15 t-align--center t-decor--none t-transf--uc width-100">Buy Now</button>
+        </form>
+      </div>
+      <span class="l-spacing fw-400 d-none lg:d-iblock padding-7-18 mb-50 bc-grey0 lg:mt-30">
+        {{ section.settings.title }}
+      </span>
+      <p class="c-grey2 mb-40">
+        {{ product.description }}
+      </p>
+      <h2 class="fs-14-16 fw-600 t-transf--uc mb-40">
+        {{ section.settings.gift_title | upcase }}
+      </h2>
+      {% if section.settings.img != blank %}
+        <img
+          class="width-100 product-img__size bg-style"
+          src="{{ section.settings.img | image_url }}"
+          alt="anh-sp">
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Product default",
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "title",
+        "label": "Title",
+        "default": "GET THIS PRODUCT BY 1ST APR !"
+      }, {
+        "type": "inline_richtext",
+        "id": "gift_title",
+        "label": "Gift Title",
+        "default": "OUR GIFT BOX EXCLUSIVELY FOR YOU"
+      }, {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Image"
+      }
+    ]
+  }
+{% endschema %}

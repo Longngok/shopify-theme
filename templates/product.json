@@ -1,0 +1,55 @@
+{
+    "sections":
+    {
+        "product": {
+            "type": "product"
+        },
+        "tab":{
+            "type": "tab"
+        },
+        "related-product":{
+            "type": "related-products"
+        },
+        "multicolumn":{
+            "type": "multicolumn",
+            "blocks": {
+              "column1":{
+                "type": "column",
+                "settings": {
+  
+                }
+              },
+              "column2":{
+                "type": "column",
+                "settings": {
+  
+                }
+              },
+              "column3":{
+                "type": "column",
+                "settings": {
+  
+                }
+              },
+              "column4":{
+                "type": "column",
+                "settings": {
+  
+                }
+              }
+            },
+            "block_order": [
+              "column1",
+              "column2",
+              "column3",
+              "column4"
+            ]
+        }
+    },
+    "order": [
+        "product",
+        "tab",
+        "related-product",
+        "multicolumn"
+    ]
+}

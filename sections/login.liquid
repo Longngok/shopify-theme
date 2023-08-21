@@ -1,0 +1,34 @@
+{% if customer %}
+  <p>You are already logged in as {{ customer.first_name }}.
+    <a href="/account/logout">Logout</a>
+  </p>
+{% else %}
+  <h2>Login</h2>
+  <form
+    method="post"
+    action="/account/login"
+    class="login-form">
+    <input
+      type="hidden"
+      name="form_type"
+      value="customer_login">
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="customer[email]"
+      required>
+
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      id="password"
+      name="customer[password]"
+      required>
+
+    <button type="submit">Login</button>
+  </form>
+  <p>
+    <a href="/account/register">Create an account</a>
+  </p>
+{% endif %}

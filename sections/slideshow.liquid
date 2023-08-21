@@ -1,0 +1,84 @@
+<div class="p-relative  oflow--hidden height-100">
+  <div class="banner-images d-flex">
+    {% for block in section.blocks %}
+      <div class="width-100 p-relative">
+        {% if block.settings.image != blank %}
+          <img
+            class="banner-img bg-style"
+            src="{{ block.settings.image | image_url }}"
+            alt="">
+        {%- else -%}
+          {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg banner-img bg-style' }}
+        {% endif %}
+        <div class="container gap-25 lg:gap-45">
+          <div class="p-absolute bottom-15 lg:bottom-50">
+            <h1 class="fs-18 h1 l-spacing c-secondary mb-15 lg:mb-20 fw-600">
+              {{ block.settings.heading | upcase }}
+            </h1>
+            {% if block.settings.button_label != blank %}
+              <a class="btn btn-secondary btn-border--none t-decor--none padding-12-32 t-transf--uc" href="">
+                {{ block.settings.button_label }}
+              </a>
+            {%- else -%}
+              <a href="d-none"></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <button class="btn btn-link btn-border--none max-wh-2 p-absolute top-50pc left-15 lg:left-50 btn-prev">
+    {% render 'icon-prev' %}
+  </button>
+  <button class="btn btn-link btn-border--none max-wh-2 p-absolute top-50pc right-15 lg:right-50 btn-next">
+    {% render 'icon-next' %}
+  </button>
+</div>
+{% schema %}
+  {
+    "name": "Slide Show",
+    "tag": "section",
+    "class": "banner",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }, {
+            "type": "inline_richtext",
+            "id": "heading",
+            "default": "Title baner",
+            "label": "Heading"
+          }, {
+            "type": "text",
+            "id": "button_label",
+            "default": "Shop now",
+            "label": "Button"
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": "Button link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Slide Show",
+        "blocks": [
+          {
+            "type": "image"
+          }, {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+
+  }
+{% endschema %}

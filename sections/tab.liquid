@@ -1,0 +1,102 @@
+<div class="container" style="overflow: hidden;">
+  <div class="d-flex gap-40 padding-13 lg:padding-0 scroll">
+    {% for tab in section.blocks %}
+      <button class="btn btn-link btn-success active-btn flex-item fs-18 " onclick="toggleFAQChange(this, {{ forloop.index0 }})">
+        {{ tab.settings.tab_title }}
+      </button>
+    {% endfor %}
+  </div>
+  <div>
+    {% for tab in section.blocks %}
+      <div class="FAQ-change" data-faq="{{ forloop.index0 }}">
+        <div class="d-flex flex-cl gap-40 lg:d-flex-row lg:j-content--sb padding-ver-40 lg:padding-80-0">
+          <div class="">
+            <h2 class="h2 fw-600 t-transf--uc mb-35">
+              {{ tab.settings.content_title }}
+            </h2>
+            {% for i in (1..5) %}
+              {% capture Content %}content{{ i }}{% endcapture %}
+              {% if tab.settings[Content] != blank %}
+                <ul class="d-flex flex-cl gap-15 ml-16">
+                  <li class="c-grey2">
+                    {{ tab.settings[Content] }}
+                  </li>
+                </ul>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% if tab.settings.tab_img != blank %}
+            <img
+              class="width-100 lg:max-width-499"
+              src="{{ tab.settings.tab_img | image_url }}"
+              alt="anh-sp">
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "tab",
+    "blocks": [
+      {
+        "name": "Tab",
+        "type": "Tab",
+        "settings": [
+          {
+            "type": "inline_richtext",
+            "id": "tab_title",
+            "label": "Tab title",
+            "default": "Title"
+          },
+          {
+            "type": "inline_richtext",
+            "id": "content_title",
+            "label": "Content title"
+          },
+          {
+            "type": "richtext",
+            "id": "content1",
+            "label": "Tab Content 1"
+          },
+          {
+            "type": "richtext",
+            "id": "content2",
+            "label": "Tab Content 2"
+          }, {
+            "type": "richtext",
+            "id": "content3",
+            "label": "Tab Content 3"
+          }, {
+            "type": "richtext",
+            "id": "content4",
+            "label": "Tab Content 4"
+          }, {
+            "type": "richtext",
+            "id": "content5",
+            "label": "Tab Content 5"
+          }, {
+            "type": "image_picker",
+            "id": "tab_img",
+            "label": "Image"
+          }
+
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Tab",
+        "blocks": [
+          {
+            "type": "Tab"
+          }, {
+            "type": "Tab"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

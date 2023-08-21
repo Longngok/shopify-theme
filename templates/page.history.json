@@ -1,0 +1,44 @@
+{
+    "sections":{
+        "Title":{
+            "type": "title-background"
+        },
+        "Video-with-text":{
+            "type": "video-with-text"
+        },
+        "Multirow":{
+            "type": "multirow",
+            "blocks": {
+                "row1":{
+                    "type": "row",
+                    "settings": {
+                    }
+                },
+                "row2":{
+                    "type": "row",
+                    "settings": {
+                    }
+                },
+                "row3":{
+                    "type": "row",
+                    "settings": {
+                    }
+                }
+            },
+            "block_order": [
+                "row1",
+                "row2",
+                "row3"
+            ]
+        },
+        "Richtext":{
+            "type": "richtext"
+        }
+    },
+    "order": [
+        "Title",
+        "Video-with-text",
+        "Multirow",
+        "Richtext"
+    ]
+}

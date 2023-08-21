@@ -1,0 +1,75 @@
+{
+    "sections": {
+        "slider":{
+            "type": "slideshow",
+            "blocks": { 
+          "slide1": {
+            "type": "image"
+          },
+          "slide2": {
+            "type": "image"
+          }
+        },
+        "block_order": [
+          "slide1",
+          "slide2"
+        ]
+        },
+        "featured-collection":{
+            "type": "feature-collection"
+        },
+        "media-with-text":{
+            "type": "media-with-text"
+        },
+        "featured-products":
+        {
+            "type": "feature-product"
+        },
+        "richtext":{
+          "type": "richtext"
+        },
+        "service":{
+          "type": "multicolumn",
+          "blocks": {
+            "column1":{
+              "type": "column",
+              "settings": {
+
+              }
+            },
+            "column2":{
+              "type": "column",
+              "settings": {
+
+              }
+            },
+            "column3":{
+              "type": "column",
+              "settings": {
+
+              }
+            },
+            "column4":{
+              "type": "column",
+              "settings": {
+
+              }
+            }
+          },
+          "block_order": [
+            "column1",
+            "column2",
+            "column3",
+            "column4"
+          ]
+        }
+    },
+    "order": [
+        "slider",
+        "featured-collection",
+        "media-with-text",
+        "featured-products",
+        "richtext",
+        "service"
+    ]
+}

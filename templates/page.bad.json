@@ -1,0 +1,14 @@
+{
+    "sections":{
+        "title" :{
+            "type": "title-background"
+        },
+        "bad":{
+            "type": "bad"
+        }
+    },
+    "order":[
+        "title",
+        "bad"
+    ]
+}

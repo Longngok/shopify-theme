@@ -1,0 +1,34 @@
+{
+    "sections": {
+        "Title":{
+            "type": "title-background"
+        },
+        "contact-main":{
+            "type": "multicolumn",
+            "blocks": {
+                "column1":{ 
+                    "type": "column"
+                },
+                "column2":{ 
+                    "type": "column"
+                },
+                "column3":{ 
+                    "type": "column"
+                },
+                "column4":{ 
+                    "type": "column"
+                }
+            },
+            "block_order": [
+                "column1",
+                "column2",
+                "column3",
+                "column4"
+            ]
+        }
+    },
+    "order": [
+        "Title",
+        "contact-main"
+    ]
+}

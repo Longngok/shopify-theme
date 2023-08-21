@@ -1,0 +1,82 @@
+<div class="container padding-ver-40 lg:padding-100">
+  <div class="video-wrapper p-relative mb-30 lg:mb-50">
+    {% if section.settings.img != blank %}
+      <img
+        class="wh-100"
+        src="{{ section.settings.img | image_url }}"
+        alt="">
+    {% else %}
+      {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg wh-100' }}
+    {% endif %}
+    <button
+      id="playButton"
+      class="p-absolute btn-play__position btn btn-link btn-border--none"
+      onclick="playVideo()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="78"
+        height="78"
+        viewBox="0 0 78 78"
+        fill="none">
+        <circle
+          cx="39"
+          cy="39"
+          r="38.5"
+          stroke="white" />
+        <path d="M55 36.7679C56.3333 37.5377 56.3333 39.4622 55 40.232L31.75 53.6554C30.4167 54.4252 28.75 53.463 28.75 51.9234L28.75 25.0766C28.75 23.537 30.4167 22.5748 31.75 23.3446L55 36.7679Z" fill="white" />
+      </svg>
+    </button>
+  </div>
+  <h2 class="h1 fw-600 mb-25 t-align--center">
+    {{ section.settings.title | upcase }}
+  </h2>
+  <p class="c-grey2 t-align--center">
+    {{ section.settings.description }}
+  </p>
+  <div id="videoOverlay" class="video-overlay hide">
+    <button
+      id="closeButton"
+      class="btn-close"
+      onclick="closeVideo()">&times;</button>
+    {% if section.settings.video-input != blank %}
+      {{ section.settings.video-input }}
+    {% else %}
+      <iframe
+        id="videoPlayer"
+        width="300"
+        height="300"
+        src="https://www.youtube.com/embed/kk-1bEP-7CA"
+        title="Louis VUITTON High Jewelry Campaign 2019 Savoir Faire"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "video with text",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Choose your picture"
+      }, {
+        "type": "html",
+        "id": "video-input",
+        "label": "Insert your video address"
+      }, {
+        "type": "inline_richtext",
+        "id": "title",
+        "label": "Write your text",
+        "default": "Birth of brand"
+      }, {
+        "type": "textarea",
+        "id": "description",
+        "label": "Write your paragraph",
+        "default": "Passion"
+      }
+    ]
+  }
+{% endschema %}

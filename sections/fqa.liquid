@@ -1,0 +1,154 @@
+<div class="container p-relative padding-ver-40 lg:padding-ver-100" style="overflow: hidden;">
+  <div class="d-flex lg:j-content--center gap-40 padding-13 lg:padding-0 scroll mb-37 lg:mb-60">
+    {% for fqa in section.blocks %}
+      <button class="btn btn-link btn-success active-btn flex-item fs-18 " onclick="toggleFAQChange(this, {{ forloop.index0 }})">
+        {{ fqa.settings.tab_title | upcase }}
+      </button>
+    {% endfor %}
+  </div>
+  <div class="FAQ-container mb-60 lg:mb-100">
+    {% for fqa in section.blocks %}
+      <div class="FAQ-change" data-faq="{{ forloop.index0 }}">
+        {% for i in (1..5) %}
+          {% capture quesTitle %}ques_title{{ i }}{% endcapture %}
+          {% capture quesContent %}ques_content{{ i }}{% endcapture %}
+          {% if fqa.settings[quesContent] != blank %}
+            <div class="boder-bt--grey3 change-menu" onclick="toggleDropdown(this)">
+              <div class="d-flex lg:j-content--sb gap-30 padding-20-0 padding-ver-40">
+                <h3 class="h4 cursor-pointer" onclick="toggleDropdown(this)">
+                  {{ fqa.settings[quesTitle] }}
+                </h3>
+                <button class="btn btn-link btn-border--none" onclick="toggleDropdown(this)">
+                  <svg
+                    class="toggle-svg"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="21"
+                    height="21"
+                    viewBox="0 0 21 21"
+                    fill="none">
+                    <rect
+                      y="9.5"
+                      width="21"
+                      height="2"
+                      fill="#171719" />
+                    <rect
+                      x="9.5"
+                      y="21"
+                      width="21"
+                      height="2"
+                      transform="rotate(-90 9.5 21)"
+                      fill="#171719" />
+                  </svg>
+                </button>
+              </div>
+              <div class="dropdown">
+                <p>
+                  {{ fqa.settings[quesContent] }}
+                </p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="t-align--center">
+    <span class="h3">
+      {{ section.settings.additional_content }}
+    </span>
+    <a class="h3 c-primary" href="{{ section.settings.link }}">
+      {{ section.settings.additional_link }}
+    </a>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "fqa",
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "additional_content",
+        "label": "Additional Title",
+        "default": "Do you have any other questions?"
+      }, {
+        "type": "inline_richtext",
+        "id": "additional_link",
+        "label": "Link title",
+        "default": "Contact us now"
+      }, {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Fqa",
+        "type": "fqa",
+        "settings": [
+          {
+            "type": "inline_richtext",
+            "id": "tab_title",
+            "label": "Title",
+            "default": "Title"
+          },
+          {
+            "type": "inline_richtext",
+            "id": "ques_title1",
+            "label": "Question Title 1",
+            "default": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "ques_content1",
+            "label": "Question 1"
+          },
+          {
+            "type": "inline_richtext",
+            "id": "ques_title2",
+            "label": "Question Title 2",
+            "default": "Title2"
+          }, {
+            "type": "richtext",
+            "id": "ques_content2",
+            "label": "Question 2"
+          }, {
+            "type": "inline_richtext",
+            "id": "ques_title3",
+            "label": "Question Title 3",
+            "default": "Title3"
+          }, {
+            "type": "richtext",
+            "id": "ques_content3",
+            "label": "Question 3"
+          }, {
+            "type": "inline_richtext",
+            "id": "ques_title4",
+            "label": "Question Title 4",
+            "default": "Title4"
+          }, {
+            "type": "richtext",
+            "id": "ques_content4",
+            "label": "Question 4"
+          }, {
+            "type": "inline_richtext",
+            "id": "ques_title5",
+            "label": "Question Title 5",
+            "default": "Title5"
+          }, {
+            "type": "richtext",
+            "id": "ques_content5",
+            "label": "Question 5"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "FQA"
+      }
+    ]
+  }
+{% endschema %}

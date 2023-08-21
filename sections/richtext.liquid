@@ -1,0 +1,185 @@
+{% style %}
+  {% if section.settings.background != blank %}
+    .bg-img {
+      background-image: url('{{ section.settings.background | image_url }}');
+    }
+  {% endif %}
+  .padding {
+    padding: {{ section.settings.sm_padding | append: 'rem' }}
+    0;
+  }
+  .heading-fs {
+    font-size: {{ section.settings.font-size | append: 'rem' }}
+  }
+
+  .title_mb {
+    margin-bottom: {{ section.settings.title_mb | append: 'rem' }}
+  }
+
+  .content_mb {
+    margin-bottom: {{ section.settings.content_mb | append: 'rem'  }}
+  }
+
+  @media(min-width: 769px) {
+    .lg-padding {
+      padding: {{ section.settings.lg_padding | append: 'rem' }}
+      0;
+    }
+  }
+{% endstyle %}
+
+
+<div class="bg-img bg-style" style="background-color: black;">
+  <div class="d-flex flex-cl gap-20 container padding lg-padding {{ section.settings.content_position }}">
+    <h2 class="heading-fs title_mb c-secondary l-spacing t-transf--uc fw-600 t-transf--uc">
+      {{ section.settings.title | upcase }}
+    </h2>
+    <p class="c-grey2 content_mb">
+      {{ section.settings.description }}
+    </p>
+    <div>
+      {% if section.settings.btn_showhide == false %}
+        {% if section.settings.btn_alignment == "btn1" %}
+          <a class="t-decor--none a-item--center" href="{{ section.settings.link }}">
+            <span class="h5 c-secondary l-spacing t-transf--uc l-spacing mr-10">
+              {{ section.settings.btn_label | upcase }}
+            </span>
+            {% render 'icon-transfer' %}
+          </a>
+        {% elsif section.settings.btn_alignment == "btn2" %}
+          {% if section.settings.btn_label != blank %}
+            <a class="btn btn-secondary btn-border--none h5 c-primary t-decor--none padding-12-32" href="{{ section.settings.link }}">
+              {{ section.settings.btn_label | upcase }}
+            </a>
+          {% else %}
+            <a href="d-none"></a>
+          {% endif %}
+        {% endif %}
+      {% elsif section.settings.btn_showhide == true %}
+        <a class="d-none" href=""></a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Rich Text",
+    "tag": "section",
+    "class": "rich-text",
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "title",
+        "label": "Heading",
+        "default": "NEW COLLECTION 2021"
+      },
+      {
+        "type": "range",
+        "id": "font-size",
+        "min": 2,
+        "max": 3,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "font-size",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "title_mb",
+        "min": 1.5,
+        "max": 3,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "Title margin bottom",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "content_mb",
+        "min": 0,
+        "max": 4.1,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "Content margin bottom",
+        "default": 3
+      }, {
+        "type": "textarea",
+        "id": "description",
+        "label": "Paragraph",
+        "default": "Text somethings here"
+      }, {
+        "type": "select",
+        "id": "content_position",
+        "label": "Content position",
+        "options": [
+          {
+            "value": "t-align--start",
+            "label": "Left"
+          }, {
+            "value": "t-align--center",
+            "label": "Middle"
+          }, {
+            "value": "t-align--end",
+            "label": "Right"
+          }
+        ]
+      }, {
+        "type": "image_picker",
+        "id": "background",
+        "label": "Background image"
+      }, {
+        "type": "range",
+        "id": "lg_padding",
+        "min": 10,
+        "max": 20.5,
+        "step": 0.5,
+        "unit": "rem",
+        "label": "Desktop padding",
+        "default": 18
+      }, {
+        "type": "range",
+        "id": "sm_padding",
+        "min": 5,
+        "max": 10,
+        "step": 1,
+        "unit": "rem",
+        "label": "Mobile padding",
+        "default": 6
+      }, {
+        "type": "checkbox",
+        "id": "btn_showhide",
+        "label": "Hide your button",
+        "default": false
+      }, {
+        "type": "select",
+        "id": "btn_alignment",
+        "label": "Button style",
+        "options": [
+          {
+            "value": "btn1",
+            "label": "Button 1"
+          }, {
+            "value": "btn2",
+            "label": "Button 2"
+          }
+        ],
+        "default": "btn1"
+      }, {
+        "type": "text",
+        "id": "btn_label",
+        "label": "Button label",
+        "default": "see more"
+      }, {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Rich Text"
+      }
+    ]
+  }
+{% endschema %}

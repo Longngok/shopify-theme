@@ -1,0 +1,32 @@
+{{ 'cart.css' | asset_url | stylesheet_tag }}
+<section class="cart-footer container padding-ver-40 lg:padding-ver-100 {% if cart == empty %} d-none{% endif %} ">
+  <div class="container">
+    <div class="">
+      <div class="">
+        <div class="d-flex mb-20">
+          <h2 class="totals__subtotal fw-400">Subtotal</h2>
+          <p class="totals__subtotal-value">
+            {% assign total_price = 0 %}
+            {% for item in cart.items %}
+              {% assign product_price = item.product.price | times: item.quantity %}
+              {% assign total_price = total_price | plus: product_price %}
+            {% endfor %}
+            {{ total_price | money }}
+          </p>
+        </div>
+        <div class="cart_checkout">
+          {% if cart.items == empty %}
+            <button disabled class="btn btn-primary d-inline-block">Checkout</button>
+          {% else %}
+            <form action="/checkout" method="post">
+              <input
+                type="submit"
+                value="Checkout"
+                class="btn__checkout btn btn-primary d-iblock">
+            </form>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
