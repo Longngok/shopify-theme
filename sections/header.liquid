@@ -1,13 +1,23 @@
+{% style %}
+  .menu-link
+  {
+    padding: 0.5rem 1rem;
+  }
+{% endstyle %}
+
 <div class="d-flex j-content--sb a-item--center padding-15 lg:padding-20-50 p-relative bc-secondary">
-  <a class="d-iblock t-decor--none" href="{{ routes.root_url }}">
-    {% if section.settings.logo != blank %}
+  {% if section.settings.logo != blank %}
+    <a class="d-iblock t-decor--none logo-size lg:logo-size" href="{{ routes.root_url }}">
       <img
-        class="logo-size lg:logo-size bg-style"
+        class="height-100 objectfit--cv"
         src="{{ section.settings.logo | image_url }}"
         alt="{{ shop.name }}">
-    {%- else -%}
-      <span class="h1 c-primary">{{ shop.name }}</span>
-    {% endif %}
+    </a>
+  {%- else -%}
+    <a class="d-flex a-item--center t-decor--none logo-size lg:logo-size" href="{{ routes.root_url }}">
+      <span class="h2 c-primary">{{ shop.name }}</span>
+    </a>
+  {% endif %}
   </a>
   <nav class="p-absolute lg:p-static width-100 lg:width-fit top-70 left-0 dropdown-menu z-index-100">
     <ul class="l-style--none d-flex flex-cl lg:j-content--center lg:d-flex-row gap-30 md:gap-40 lg:gap-50 padding-30-15 lg:padding-0 bc-secondary">
@@ -46,9 +56,10 @@
     <button class="btn btn-link btn-border--none max-wh-1">
       {% render 'icon-heart' %}
     </button>
-    <a href="{{ routes.account_url }}" class="btn btn-link btn-border--none max-wh-1">
+    {% capture icon_account_content %}
       {% render 'icon-user' %}
-    </a>
+    {% endcapture %}
+    {{ icon_account_content | link_to: routes.account_url, class : 'btn btn-link btn-border--none max-wh-1' }}
     {% capture icon_cart_content %}
       {% render 'icon-cart' %}
     {% endcapture %}

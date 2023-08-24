@@ -13,7 +13,7 @@
               Product
             </th>
             <th class="t-align--start c-primary"></th>
-            <th class="t-align--startc-primary">
+            <th class="t-align--start c-primary">
               Quantity
             </th>
             <th class="t-align--start c-primary">
@@ -96,10 +96,10 @@
     </form>
   </div>
 {% else %}
-  <div class="ctnr">
-    <h2 class="h1 color-primary mb-30 t--align-center">Your cart is empty</h2>
-    <div class="d-flex jc-center">
-      <a href="" class="btn btn-primary d-iblock">Continue shopping</a>
+  <div class="container padding-ver-40 lg:padding-ver-100">
+    <h2 class="h1 c-primary mb-30 t-align--center t-transf--uc">Your cart is empty</h2>
+    <div class="d-flex j-content--center">
+      <a href="{{ section.settings.link }}" class="btn btn-primary d-iblock padding-10 t-decor--none">Continue shopping</a>
     </div>
 
   </div>

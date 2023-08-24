@@ -1,3 +1,22 @@
+{% style %}
+  .mb_title {
+    margin-bottom: {{ section.settings.title_mb | append :'rem' }}
+  }
+
+  .mb_des {
+    margin-bottom: {{ section.settings.des_mb | append: 'rem'  }}
+  }
+
+  @media(min-width: 992px) {
+    .lg_mb_title {
+      margin-bottom: {{ section.settings.lg_title_mb |append: 'rem' }}
+    }
+    .lg_mb_des {
+      margin-bottom: {{ section.settings.lg_des_mb | append: 'rem'  }}
+    }
+  }
+{% endstyle %}
+
 <div class="container padding-ver-40 lg:padding-ver-100 d-grid grid-layout4">
   <div class="{{ section.settings.img_aligment }}">
     {% if section.settings.img_video == "video" %}
@@ -29,19 +48,17 @@
     {% endif %}
   </div>
   <div class="content-wrapper bc-grey0 padding-60-30 lg:padding-133-90">
-    <h2 class="h1 l-spacing fw-600 mb-20">
+    <h2 class="h1 l-spacing fw-600 mb_title lg_mb_title">
       {{ section.settings.heading | upcase }}
     </h2>
-    <p class="c-grey2 mb-70">
+    <p class="c-grey2 mb_des lg_mb_des">
       {{ section.settings.description }}
     </p>
 
     {% if section.settings.button != blank %}
-      <a href="" class="btn btn-secondary btn-border--none t-decor--none padding-12-32">
+      <a href="{{ section.settings.link }}" class="btn btn-secondary btn-border--none t-decor--none padding-12-32">
         {{ section.settings.button | upcase }}
       </a>
-    {%- else -%}
-      <a class="d-none" href=""></a>
     {% endif %}
   </div>
 </div>
@@ -51,7 +68,15 @@
     class="btn-close"
     onclick="closeVideo()">&times;</button>
   {% if section.settings.video_embed != blank %}
-    {{ section.settings.video_embed }}
+    {% assign video-id = section.settings.video_embed | split: '=' | last %}
+    <iframe
+      id="videoPlayer"
+      width="300"
+      height="300"
+      src="https://www.youtube.com/embed/{{ video-id }}"
+      title="Louis VUITTON High Jewelry Campaign 2019 Savoir Faire"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
   {%- else -%}
     <iframe
       id="videoPlayer"
@@ -90,14 +115,14 @@
         "label": "Image aligment",
         "options": [
           {
-            "value": "order-1",
+            "value": "lg:order-1",
             "label": "Left"
           }, {
-            "value": "order-2",
+            "value": "lg:order-2",
             "label": "Right"
           }
         ],
-        "default": "order-1"
+        "default": "lg:order-2"
       },
       {
         "type": "image_picker",
@@ -105,19 +130,56 @@
         "label": "Choose your image"
       },
       {
-        "type": "html",
+        "type": "video_url",
         "id": "video_embed",
-        "label": "Insert Video"
+        "label": "Insert Video",
+        "accept": ["youtube", "vimeo"]
       }, {
         "type": "inline_richtext",
         "id": "heading",
         "label": "Title",
         "default": "Your title go here"
       }, {
+        "type": "range",
+        "id": "title_mb",
+        "min": 2,
+        "max": 2.5,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "Mobile Title Margin Bottom",
+        "default": 2
+      }, {
+        "type": "range",
+        "id": "lg_title_mb",
+        "min": 2,
+        "max": 2.5,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "Desktop Title Margin Bottom",
+        "default": 2
+      }, {
         "type": "inline_richtext",
         "id": "description",
         "label": "Description",
         "default": "Your description ?"
+      }, {
+        "type": "range",
+        "id": "des_mb",
+        "min": 7,
+        "max": 8.5,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "Mobile Description Margin Bottom",
+        "default": 7
+      }, {
+        "type": "range",
+        "id": "lg_des_mb",
+        "min": 7,
+        "max": 8.5,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "Desktop Description Margin Bottom",
+        "default": 7
       }, {
         "type": "text",
         "id": "button",

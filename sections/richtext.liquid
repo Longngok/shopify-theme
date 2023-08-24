@@ -4,37 +4,46 @@
       background-image: url('{{ section.settings.background | image_url }}');
     }
   {% endif %}
-  .padding {
+  .richtext__padding {
     padding: {{ section.settings.sm_padding | append: 'rem' }}
     0;
   }
-  .heading-fs {
-    font-size: {{ section.settings.font-size | append: 'rem' }}
+  .sm-richtext__font-size {
+    font-size: {{ section.settings.sm_font-size | append: 'rem' }}
   }
 
-  .title_mb {
-    margin-bottom: {{ section.settings.title_mb | append: 'rem' }}
+  .sm-richtext__title-mb {
+    margin-bottom: {{ section.settings.sm_title_mb | append: 'rem' }}
   }
 
-  .content_mb {
+  .richtex__content-mb {
     margin-bottom: {{ section.settings.content_mb | append: 'rem'  }}
   }
 
   @media(min-width: 769px) {
-    .lg-padding {
+    .lg-richtext__title-mb {
+      margin-bottom: {{ section.settings.lg_title_mb | append: 'rem'  }}
+    }
+    .lg-richtext__padding {
       padding: {{ section.settings.lg_padding | append: 'rem' }}
       0;
+    }
+    .lg-richtext__font-size {
+      font-size: {{ section.settings.lg_font-size | append: 'rem'  }}
     }
   }
 {% endstyle %}
 
 
 <div class="bg-img bg-style" style="background-color: black;">
-  <div class="d-flex flex-cl gap-20 container padding lg-padding {{ section.settings.content_position }}">
-    <h2 class="heading-fs title_mb c-secondary l-spacing t-transf--uc fw-600 t-transf--uc">
+  <div class="d-flex flex-cl container richtext__padding lg-richtext__padding {{ section.settings.content_position }}">
+    <h2 class="sm-richtext__font-size lg-richtext__font-size sm-richtext__title-mb lg-richtext__title-mb c-secondary l-spacing t-transf--uc fw-600 t-transf--uc">
       {{ section.settings.title | upcase }}
     </h2>
-    <p class="c-grey2 content_mb">
+    {% if section.settings.content_position == 't-align--start' %}
+      {% assign desMaxwidth = 'max-width--327' %}
+    {% endif %}
+    <p class="c-grey2 richtex__content-mb {{ desMaxwidth }}">
       {{ section.settings.description }}
     </p>
     <div>
@@ -51,12 +60,10 @@
             <a class="btn btn-secondary btn-border--none h5 c-primary t-decor--none padding-12-32" href="{{ section.settings.link }}">
               {{ section.settings.btn_label | upcase }}
             </a>
-          {% else %}
-            <a href="d-none"></a>
           {% endif %}
         {% endif %}
       {% elsif section.settings.btn_showhide == true %}
-        <a class="d-none" href=""></a>
+        <a class="d-none" href="{{ section.settings.link }}"></a>
       {% endif %}
     </div>
   </div>
@@ -76,25 +83,49 @@
       },
       {
         "type": "range",
-        "id": "font-size",
+        "id": "sm_font-size",
         "min": 2,
         "max": 3,
         "step": 0.1,
         "unit": "rem",
-        "label": "font-size",
+        "label": "Mobile font size",
         "default": 2
       },
       {
         "type": "range",
-        "id": "title_mb",
+        "id": "lg_font-size",
+        "min": 2,
+        "max": 3,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "Desktop font size",
+        "default": 2
+      },
+
+      {
+        "type": "range",
+        "id": "lg_title_mb",
         "min": 1.5,
         "max": 3,
         "step": 0.1,
         "unit": "rem",
-        "label": "Title margin bottom",
+        "label": "Desktop Title margin bottom",
         "default": 2
-      },
-      {
+      }, {
+        "type": "range",
+        "id": "sm_title_mb",
+        "min": 1.5,
+        "max": 3,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "Mobile Title margin bottom",
+        "default": 2
+      }, {
+        "type": "inline_richtext",
+        "id": "description",
+        "label": "Paragraph",
+        "default": "Text somethings here"
+      }, {
         "type": "range",
         "id": "content_mb",
         "min": 0,
@@ -103,11 +134,6 @@
         "unit": "rem",
         "label": "Content margin bottom",
         "default": 3
-      }, {
-        "type": "textarea",
-        "id": "description",
-        "label": "Paragraph",
-        "default": "Text somethings here"
       }, {
         "type": "select",
         "id": "content_position",
@@ -142,7 +168,7 @@
         "id": "sm_padding",
         "min": 5,
         "max": 10,
-        "step": 1,
+        "step": 0.1,
         "unit": "rem",
         "label": "Mobile padding",
         "default": 6

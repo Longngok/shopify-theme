@@ -28,7 +28,7 @@
         </div>
       {% endfor %}
     {% else %}
-      {% for related_product in collections.all.products %}
+      {% for related_product in collections.all.products limit:4 %}
         <div class="grid__item">
           <div class="card d-flex flex-cl a-item--center">
             <div class="p-relative product-img">
@@ -73,25 +73,20 @@
 
 {% schema %}
   {
-    "name": "Featured Products",
+    "name": "Related Products",
     "tag": "section",
-    "class": "Featured-procuts",
+    "class": "Featured-products",
     "settings": [
       {
         "type": "inline_richtext",
         "id": "title",
         "label": "Enter your title",
-        "default": "Feature Product"
-      },{
-        "type": "inline_richtext",
-        "id": "button",
-        "label": "Enter your button",
-        "default": "Add to cart"
+        "default": "Related product"
       }
     ],
     "presets": [
       {
-        "name": "Featured Products"
+        "name": "Related Products"
       }
     ]
   }

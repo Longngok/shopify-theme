@@ -4,6 +4,7 @@
 .fw-600 {
   font-weight: 600;
 }
+
 @media(max-width: 345px) {
   .container {
     margin: 0 var(--spacing-15);
@@ -124,6 +125,10 @@
     height: 100%;
     max-height: 28rem;
   }
+
+  .lg\:height-360{
+    height: 36rem;
+  } 
 
   .lg\:height-522 {
     height: 52.2rem;
@@ -250,9 +255,18 @@
   }
 
   /*--margin--*/
-  .lg\:mt-30 {
-    margin-top: 3rem;
+  .lg\:mt-0
+  {
+    margin-top: 0;
   }
+  .lg\:mt-30 {
+    margin-top: var(--spacing-30);
+  }
+
+  .lg\:mt-80{
+    margin-top: var(--spacing-80);
+  }
+  
   .lg\:mt-160 {
     margin-top: 16rem;
   }

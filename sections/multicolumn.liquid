@@ -9,25 +9,34 @@
   .des__mb {
     margin-bottom: {{ section.settings.mb_des | append: 'rem'  }}
   }
+
+  .sm-mc__mb-header {
+    margin-bottom: {{ section.settings.sm-mc__header-mb | append: 'rem'  }}
+  }
+  @media(min-width: 992px) {
+    .lg-mc__mb-header {
+      margin-bottom: {{ section.settings.lg-mc__header-mb | append: 'rem'  }}
+    }
+  }
 {% endstyle %}
 <div class="{{ section.settings.background }}">
   <div class="container padding-ver-40 lg:padding-ver-100">
-    <div class="t-align--center mb-30 lg:mb-50">
-      <h2 class="h1 fw-600 t-transf--uc mb-20 lg:mb-15">
+    <div class="t-align--center">
+      <h2 class="h1 fw-600 t-transf--uc sm-mc__mb-header lg-mc__mb-header">
         {{ section.settings.title | upcase }}
       </h2>
       {% if section.settings.description != blank %}
-        <div class="c-grey2">
+        <div class="c-grey2 mb-30 lg:mb-50">
           <span>
             {{ section.settings.description }}
           </span>
-          <a class="c-grey2" href=" {{ seciton.settings.link }}">
+          <a class="c-grey2" href="{{ section.settings.header-link }}">
             {{ section.settings.link_label }}
           </a>
         </div>
       {% endif %}
     </div>
-    <div class="d-grid {{ section.settings.grid-item }} mb-40 lg:mb-80 gap-20">
+    <div class="d-grid {{ section.settings.grid-item }} gap-20">
       {% for column in section.blocks %}
         {% if column.settings.background == "bc-grey0" %}
           <div class="grid__item">
@@ -79,7 +88,7 @@
                   {{ column.settings.box_description }}
                 </p>
                 {% if column.settings.button != blank %}
-                  <a class="t-decor--none d-flex gap-10 a-item--center" href="#">
+                  <a class="t-decor--none d-flex gap-10 a-item--center" href="{{ column.settings.box-link }}">
                     <span class="h5 c-primary l-spacing t-transf--uc l-spacing">
                       {{ column.settings.button }}
                     </span>
@@ -93,8 +102,8 @@
       {% endfor %}
     </div>
     {% if section.settings.hide == false %}
-      <div class="t-align--center">
-        <h3 class="h4 fw-600 mb-15">
+      <div class="t-align--center mt-40 lg:mt-80">
+        <h3 class="fs-14-16 fw-600 mb-15">
           {{ section.settings.additional_title | upcase }}
         </h3>
         <div class="c-grey2">
@@ -120,18 +129,40 @@
         "default": "Our Service"
       },
       {
-        "type": "textarea",
+        "type": "range",
+        "id": "sm-mc__header-mb",
+        "min": 2,
+        "max": 2.5,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "Mobile Header Margin Bottom",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "lg-mc__header-mb",
+        "min": 1.5,
+        "max": 5,
+        "step": 0.1,
+        "unit": "rem",
+        "label": "Desktop Header Margin Bottom",
+        "default": 1.5
+      },
+      {
+        "type": "inline_richtext",
         "id": "description",
         "label": "Write your paragraph",
         "default": "Before contacting us we recommend that you read the"
-      },
-      {
+      }, {
         "type": "text",
         "id": "link_label",
         "label": "Write your link content",
         "default": "frequently asked questions"
-      },
-      {
+      }, {
+        "type": "url",
+        "id": "header-link",
+        "label": "Header link"
+      }, {
         "type": "select",
         "id": "background",
         "label": "Section Type",
@@ -218,7 +249,7 @@
             "default": "FREE SHIPPING IN ITALY"
           },
           {
-            "type": "textarea",
+            "type": "inline_richtext",
             "id": "box_description",
             "label": "Box paragraph",
             "default": "Lorem ipsum dolor sit amet"
@@ -230,7 +261,7 @@
             "default": "read more"
           }, {
             "type": "url",
-            "id": "link",
+            "id": "box-link",
             "label": "Input your button link"
           }
         ]

@@ -1,0 +1,9 @@
+.main__padding {
+    padding: 1.5rem;
+  }
+
+  @media(min-width: 992px) {
+    .lg-main__padding {
+      padding: 2rem 5rem;
+    }
+  }

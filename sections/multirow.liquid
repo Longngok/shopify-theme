@@ -17,7 +17,9 @@
 
         <div class="card-body">
           {% if row.settings.svg-icon != blank %}
-            {{ row.settings.svg-icon }}
+            <div class="mb-30">
+              {{ row.settings.svg-icon }}
+            </div>
           {% else %}
             <svg
               class="mb-30"
@@ -81,14 +83,14 @@
             "label": "Image aligment",
             "options": [
               {
-                "value": "order-1",
+                "value": "lg:order-1",
                 "label": "Left"
               }, {
-                "value": "order-2",
+                "value": "lg:order-2",
                 "label": "Right"
               }
             ],
-            "default": "order-1"
+            "default": "lg:order-1"
           },
           {
             "type": "html",
@@ -106,7 +108,7 @@
             "label": "Input your subtitle",
             "default": "DE CARLO means passion:"
           }, {
-            "type": "textarea",
+            "type": "inline_richtext",
             "id": "description",
             "label": "Write your description",
             "default": "The gift for the anniversary, for an important day or simply to celebrate everyday life ... a whirlwind of emotions, feelings and memories that will make the jewel, the extra element that can leave a little big sign."

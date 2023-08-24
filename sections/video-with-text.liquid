@@ -38,9 +38,17 @@
       id="closeButton"
       class="btn-close"
       onclick="closeVideo()">&times;</button>
-    {% if section.settings.video-input != blank %}
-      {{ section.settings.video-input }}
-    {% else %}
+    {% if section.settings.video_embed != blank %}
+      {% assign video-id = section.settings.video_embed | split: '=' | last %}
+      <iframe
+        id="videoPlayer"
+        width="300"
+        height="300"
+        src="https://www.youtube.com/embed/{{ video-id }}"
+        title="Louis VUITTON High Jewelry Campaign 2019 Savoir Faire"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    {%- else -%}
       <iframe
         id="videoPlayer"
         width="300"
@@ -63,16 +71,17 @@
         "id": "img",
         "label": "Choose your picture"
       }, {
-        "type": "html",
-        "id": "video-input",
-        "label": "Insert your video address"
+        "type": "video_url",
+        "id": "video_embed",
+        "label": "Insert Video",
+        "accept": ["youtube", "vimeo"]
       }, {
         "type": "inline_richtext",
         "id": "title",
         "label": "Write your text",
         "default": "Birth of brand"
       }, {
-        "type": "textarea",
+        "type": "inline_richtext",
         "id": "description",
         "label": "Write your paragraph",
         "default": "Passion"

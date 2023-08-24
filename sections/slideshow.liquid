@@ -16,11 +16,9 @@
               {{ block.settings.heading | upcase }}
             </h1>
             {% if block.settings.button_label != blank %}
-              <a class="btn btn-secondary btn-border--none t-decor--none padding-12-32 t-transf--uc" href="">
-                {{ block.settings.button_label }}
+              <a class="btn btn-secondary btn-border--none t-decor--none padding-12-32" href="{{ block.settings.link }}">
+                {{ block.settings.button_label | upcase }}
               </a>
-            {%- else -%}
-              <a href="d-none"></a>
             {% endif %}
           </div>
         </div>
