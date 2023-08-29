@@ -1,12 +1,8 @@
 {% style %}
-  {% if section.settings.background != blank %}
-    .bg-img {
-      background-image: url('{{ section.settings.background | image_url }}');
-    }
-  {% endif %}
+  {% if section.settings.background != blank %}{% endif %}
   .richtext__padding {
     padding: {{ section.settings.sm_padding | append: 'rem' }}
-    0;
+    var(--ctph);
   }
   .sm-richtext__font-size {
     font-size: {{ section.settings.sm_font-size | append: 'rem' }}
@@ -17,16 +13,15 @@
   }
 
   .richtex__content-mb {
-    margin-bottom: {{ section.settings.content_mb | append: 'rem'  }}
+    margin-bottom: {{ section.settings.content_mb | append: 'rem' }}
   }
-
   @media(min-width: 769px) {
     .lg-richtext__title-mb {
       margin-bottom: {{ section.settings.lg_title_mb | append: 'rem'  }}
     }
     .lg-richtext__padding {
       padding: {{ section.settings.lg_padding | append: 'rem' }}
-      0;
+      var(--ctph);
     }
     .lg-richtext__font-size {
       font-size: {{ section.settings.lg_font-size | append: 'rem'  }}
@@ -36,8 +31,8 @@
 
 
 <div class="bg-img bg-style" style="background-color: black;">
-  <div class="d-flex flex-cl container richtext__padding lg-richtext__padding {{ section.settings.content_position }}">
-    <h2 class="sm-richtext__font-size lg-richtext__font-size sm-richtext__title-mb lg-richtext__title-mb c-secondary l-spacing t-transf--uc fw-600 t-transf--uc">
+  <div class="container richtext__padding lg-richtext__padding {{ section.settings.content_position }}">
+    <h2 class="sm-richtext__font-size lg-richtext__font-size sm-richtext__title-mb lg-richtext__title-mb c-secondary">
       {{ section.settings.title | upcase }}
     </h2>
     {% if section.settings.content_position == 't-align--start' %}
@@ -50,20 +45,20 @@
       {% if section.settings.btn_showhide == false %}
         {% if section.settings.btn_alignment == "btn1" %}
           <a class="t-decor--none a-item--center" href="{{ section.settings.link }}">
-            <span class="h5 c-secondary l-spacing t-transf--uc l-spacing mr-10">
+            <span class="h5 c-secondary mr-10">
               {{ section.settings.btn_label | upcase }}
             </span>
             {% render 'icon-transfer' %}
           </a>
         {% elsif section.settings.btn_alignment == "btn2" %}
           {% if section.settings.btn_label != blank %}
-            <a class="btn btn-secondary btn-border--none h5 c-primary t-decor--none padding-12-32" href="{{ section.settings.link }}">
-              {{ section.settings.btn_label | upcase }}
-            </a>
+            {% assign btnTitle = section.settings.btn_label %}
+            {% assign btnLink = section.settings.link %}
+            {% render 'btn-secondary', btnTitle: btnTitle, btnLink: btnLink %}
           {% endif %}
         {% endif %}
       {% elsif section.settings.btn_showhide == true %}
-        <a class="d-none" href="{{ section.settings.link }}"></a>
+        <a class="d-none"></a>
       {% endif %}
     </div>
   </div>

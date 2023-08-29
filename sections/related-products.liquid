@@ -2,8 +2,8 @@
   
 {% endstyle %}
 
-<div class="container-scroll container padding-ver-40 lg:padding-ver-100">
-  <h2 class="h1 line-h-15 t-align--center mb-25 lg:mb-45 fw-600">
+<div class="container-scroll container container__padding">
+  <h2 class="h1 t-align--center mb-25 lg:mb-45">
     {{ section.settings.title | upcase }}
   </h2>
   <div class="d-grid grid-layout3 gap-15 lg:gap-20 padding-13 lg:padding-0 scroll">
@@ -20,7 +20,7 @@
               </button>
             </div>
             <div class="card-body d-flex flex-cl a-item--center gap-10 mt-20">
-              <h3 class="fs-14-16 t-transf--uc fw-600">product name</h3>
+              <h3 class="fs-14-16 t-transf--uc">product name</h3>
               <p class="h5 c-grey1 mb-10 price">1</p>
               <button class="btn btn-secondary border-primary t-transf--uc padding-8-14 lg:padding-12-32">add to cart</button>
             </div>
@@ -43,8 +43,8 @@
               </button>
             </div>
             <div class="card-body d-flex flex-cl a-item--center gap-10 mt-20">
-              <h3 class="fs-14-16 t-transf--uc fw-600">
-                {{ related_product.title }}
+              <h3 class="fs-14-16">
+                {{ related_product.title | upcase }}
               </h3>
               {% if product.price != 0 %}
                 <p class="h5 c-grey1 mb-10">

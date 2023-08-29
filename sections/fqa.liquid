@@ -1,4 +1,4 @@
-<div class="container p-relative padding-ver-40 lg:padding-ver-100" style="overflow: hidden;">
+<div class="container p-relative container__padding" style="overflow: hidden;">
   <div class="d-flex lg:j-content--center gap-40 padding-13 lg:padding-0 scroll mb-37 lg:mb-60">
     {% for fqa in section.blocks %}
       <button class="btn btn-link btn-success active-btn flex-item fs-18 " onclick="toggleFAQChange(this, {{ forloop.index0 }})">
@@ -14,7 +14,7 @@
           {% capture quesContent %}ques_content{{ i }}{% endcapture %}
           {% if fqa.settings[quesContent] != blank %}
             <div class="boder-bt--grey3 change-menu" onclick="toggleDropdown(this)">
-              <div class="d-flex lg:j-content--sb gap-30 padding-20-0 padding-ver-40">
+              <div class="d-flex lg:j-content--sb gap-30 padding-20-0">
                 <h3 class="h4 cursor-pointer" onclick="toggleDropdown(this)">
                   {{ fqa.settings[quesTitle] }}
                 </h3>

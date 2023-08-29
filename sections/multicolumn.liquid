@@ -1,28 +1,28 @@
 {% style %}
   .img__mb {
-    margin-bottom: {{ section.settings.mb_img | append: 'rem' }}
+    margin-bottom: {{ section.settings.mb_img | append : 'rem' }}
     ;
   }
   .title__mb {
-    margin-bottom: {{ section.settings.mb_title | append: 'rem'  }}
+    margin-bottom: {{ section.settings.mb_title | append : 'rem' }}
   }
   .des__mb {
-    margin-bottom: {{ section.settings.mb_des | append: 'rem'  }}
+    margin-bottom: {{ section.settings.mb_des | append : 'rem' }}
   }
 
   .sm-mc__mb-header {
-    margin-bottom: {{ section.settings.sm-mc__header-mb | append: 'rem'  }}
+    margin-bottom: {{ section.settings.sm-mc__header-mb | append : 'rem' }}
   }
   @media(min-width: 992px) {
     .lg-mc__mb-header {
-      margin-bottom: {{ section.settings.lg-mc__header-mb | append: 'rem'  }}
+      margin-bottom: {{ section.settings.lg-mc__header-mb | append : 'rem' }}
     }
   }
 {% endstyle %}
 <div class="{{ section.settings.background }}">
-  <div class="container padding-ver-40 lg:padding-ver-100">
+  <div class="container container__padding">
     <div class="t-align--center">
-      <h2 class="h1 fw-600 t-transf--uc sm-mc__mb-header lg-mc__mb-header">
+      <h2 class="h1 sm-mc__mb-header lg-mc__mb-header">
         {{ section.settings.title | upcase }}
       </h2>
       {% if section.settings.description != blank %}
@@ -52,15 +52,15 @@
                 {% endif %}
               </div>
               <div class="card-body t-align--center d-flex flex-cl a-item--center">
-                <h3 class="h4 title__mb  l-spacing fw-600">
+                <h3 class="h4 title__mb">
                   {{ column.settings.box_heading | upcase }}
                 </h3>
                 <p class="c-grey2 des__mb">
                   {{ column.settings.box_description }}
                 </p>
                 <a class="t-decor--none d-flex gap-10 a-item--center" href="#">
-                  <span class="h5 c-primary l-spacing t-transf--uc l-spacing">
-                    {{ column.settings.button }}
+                  <span class="h5 c-primary l-spacing">
+                    {{ column.settings.button | upcase }}
                   </span>
                   {% render 'icon-transfer' style"c-primary" %}
                 </a>
@@ -81,7 +81,7 @@
                 {% endif %}
               </div>
               <div class="card-body t-align--center d-flex flex-cl a-item--center">
-                <h3 class="h4 title__mb  l-spacing fwt-600">
+                <h3 class="h4 title__mb">
                   {{ column.settings.box_heading | upcase }}
                 </h3>
                 <p class="c-grey2 des__mb">
@@ -89,8 +89,8 @@
                 </p>
                 {% if column.settings.button != blank %}
                   <a class="t-decor--none d-flex gap-10 a-item--center" href="{{ column.settings.box-link }}">
-                    <span class="h5 c-primary l-spacing t-transf--uc l-spacing">
-                      {{ column.settings.button }}
+                    <span class="h5 c-primary l-spacing">
+                      {{ column.settings.button | upcase }}
                     </span>
                     {% render 'icon-next-dark' %}
                   </a>
@@ -103,7 +103,7 @@
     </div>
     {% if section.settings.hide == false %}
       <div class="t-align--center mt-40 lg:mt-80">
-        <h3 class="fs-14-16 fw-600 mb-15">
+        <h3 class="fs-14-16 mb-15">
           {{ section.settings.additional_title | upcase }}
         </h3>
         <div class="c-grey2">

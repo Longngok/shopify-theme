@@ -1,31 +1,26 @@
-<div class="container padding-ver-40 lg:padding-ver-100">
-  <h2 class="h1 l-spacing t-transf--uc t-align--center mb-25 lg:mb-45 fw-600">
-    {{ section.settings.heading }}
+<div class="container">
+  <h2 class="h1 t-align--center mb-25 lg:mb-45">
+    {{ section.settings.heading | upcase }}
   </h2>
   <div class="d-grid grid-layout2 gap-15 lg:gap-20">
     {% if section.settings.collection != blank %}
       {% for collection in section.settings.collection limit: 4 -%}
-        <div class="d-grid__item width-100">
+        <div class="grid__item width-100">
           <div class="card p-relative height-222 lg:height-360">
-            <img
-              class="card-img wh-100 bg-style"
-              src="{{ collection.featured_image | image_url }}"
-              alt="">
+            {{ collection.featured_image | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'card-img wh-100 bg-style' }}
             <div class="card-body d-grid p-item--center p-absolute left-0 right-0 bottom-10 lg:bottom-30">
-              <a class="btn btn-wh btn-secondary btn-border--none padding-13 max-width-125 width-100 t-decor--none t-align--center t-transf--uc" href="{{ collection.url }}">
-                {{ collection.title }}
-              </a>
+              {{ collection.title | upcase | link_to: collection.url, class: 'btn btn-secondary btn-border--none padding-13 max-width-125 width-100 t-decor--none t-align--center' }}
             </div>
           </div>
         </div>
       {%- endfor %}
     {%- else -%}
       {% for i in (1..4) %}
-        <div class="d-grid__item width-100">
+        <div class="grid__item width-100">
           <div class="card p-relative  height-222 lg:height-360">
             {{ 'collection-apparel-1' | placeholder_svg_tag: 'placeholder-svg  card-img wh-100' }}
             <div class="card-body d-grid p-item--center p-absolute left-0 right-0 bottom-10 lg:bottom-30">
-              <a class="btn btn-wh btn-secondary btn-border--none padding-13 max-width-125 width-100 t-decor--none t-align--center t-transf--uc" href="">
+              <a class="btn btn-secondary btn-border--none padding-13 max-width-125 width-100 t-decor--none t-align--center t-transf--uc" href="">
                 Your title
               </a>
             </div>

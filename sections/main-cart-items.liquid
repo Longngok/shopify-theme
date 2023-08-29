@@ -1,6 +1,6 @@
 {{ 'cart.css' | asset_url | stylesheet_tag }}
 {%- if cart != empty -%}
-  <div class="container padding-ver-40 lg:padding-ver-100">
+  <div class="container container__padding">
     <div class="d-flex j-content--sb a-item--center mb-30">
       <h2 class="h1  c-primary t-transf--uc t-align--center">Your cart</h2>
       <a class="c-primary" href="{{ section.settings.link }}">Continue shopping</a>
@@ -65,19 +65,21 @@
                     </div>
                     <div class="delete-product" style="">
                       <form action="/cart/change" method="post">
+                        {% assign lastItem = cart.items.last %}
                         <input
                           type="hidden"
                           name="id"
-                          value="{{ item.key }}">
+                          value="{{ lastItem.key }}">
                         <input
                           type="hidden"
                           name="quantity"
                           value="0">
                         <button
-                          type="submit "
+                          type="submit"
                           id="removeLastItemBtn"
-                          style="width: 20px;border: 0;background-color: transparent;">
-                          {% render 'icon-delete' %}</button>
+                          style="width: 20px; border: 0; background-color: transparent;">
+                          {% render 'icon-delete' %}
+                        </button>
                       </form>
                     </div>
                   </div>
@@ -96,7 +98,7 @@
     </form>
   </div>
 {% else %}
-  <div class="container padding-ver-40 lg:padding-ver-100">
+  <div class="container container__padding">
     <h2 class="h1 c-primary mb-30 t-align--center t-transf--uc">Your cart is empty</h2>
     <div class="d-flex j-content--center">
       <a href="{{ section.settings.link }}" class="btn btn-primary d-iblock padding-10 t-decor--none">Continue shopping</a>

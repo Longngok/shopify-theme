@@ -1,12 +1,12 @@
-<div class="container padding-ver-40 lg:padding-ver-100">
+<div class="container container__padding">
   <div class="d-flex flex-cl gap-70 lg:gap-100">
     {% for row in section.blocks %}
 
       <div class="card d-flex flex-cl lg:d-flex-row lg:a-item--center gap-30 lg:gap-100">
-        <div class="card-image width-100 {{ row.settings.img_aligment }}">
+        <div class="width-100 {{ row.settings.img_aligment }}">
           {% if row.settings.img != blank %}
             <img
-              class="card-img lg:max-wh-1 width-100 "
+              class=" width-100 "
 
               src="{{ row.settings.img | image_url }}"
               alt="">
@@ -44,11 +44,11 @@
               </defs>
             </svg>
           {% endif %}
-          <h3 class="h1 fw-600 mb-25">
+          <h3 class="h1 mb-25">
             {{ row.settings.title | upcase }}
           </h3>
           <p>
-            <strong class="c-primary fw-600">
+            <strong class="c-primary">
               {{ row.settings.subtitle }}
             </strong>
           </p>

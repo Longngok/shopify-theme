@@ -20,23 +20,23 @@
   {% endif %}
   </a>
   <nav class="p-absolute lg:p-static width-100 lg:width-fit top-70 left-0 dropdown-menu z-index-100">
-    <ul class="l-style--none d-flex flex-cl lg:j-content--center lg:d-flex-row gap-30 md:gap-40 lg:gap-50 padding-30-15 lg:padding-0 bc-secondary">
+    <ul class="l-style--none d-flex flex-cl lg:j-content--center lg:d-flex-row gap-30 lg:gap-50 lg:r-gap-30 padding-30-15 lg:padding-0 bc-secondary f-wrap">
       {% for link in section.settings.menu.links -%}
         <li class="main-item">
-          <a class="d-iblock t-decor--none h5 c-primary fw-400 t-transf--uc p-relative" href="{{ link.url }}">
-            {{ link.title }}
+          <a class="d-iblock t-decor--none h5 c-primary fw-400 p-relative" href="{{ link.url }}">
+            {{ link.title | upcase }}
           </a>
           {% if link.links.size > 0 %}
             <ul class="lg:p-absolute dropdown-child l-style--none">
               {% for child_link in link.links %}
                 <li class="menu-link">
-                  <a class="d-iblock t-decor--none c-primary" href="{{ child_link.url }}">{{ child_link.title }}</a>
+                  <a class="d-iblock t-decor--none c-primary" href="{{ child_link.url }}">{{ child_link.title | upcase }}</a>
 
                   {% if child_link.links.size > 0 %}
                     <ul class="dropdown-grandchild l-style--none">
                       {% for grandchild_link in child_link.links %}
                         <li class="menu-link">
-                          <a class="d-iblock t-decor--none c-primary" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+                          <a class="d-iblock t-decor--none c-primary" href="{{ grandchild_link.url }}">{{ grandchild_link.title | upcase }}</a>
                         </li>
                       {% endfor %}
                     </ul>

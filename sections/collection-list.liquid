@@ -1,6 +1,6 @@
-<div class="container padding-ver-40 lg:padding-ver-100">
-  <h2 class="h1 l-spacing t-transf--uc t-align--center mb-25 lg:mb-45 fw-600">
-    {{ section.settings.heading }}
+<div class="container container__padding">
+  <h2 class="h1 t-align--center mb-25 lg:mb-45">
+    {{ section.settings.heading | upcase }}
   </h2>
   <div class="d-grid grid-layout2 gap-15 lg:gap-20">
     {% for collection in collections -%}
@@ -11,8 +11,8 @@
             src="{{ collection.featured_image | image_url }}"
             alt="">
           <div class="card-body d-grid p-item--center p-absolute left-0 right-0 bottom-10 lg:bottom-30">
-            <a class="btn btn-wh btn-secondary btn-border--none padding-13 max-width-125 width-100 t-decor--none t-align--center t-transf--uc" href="{{ collection.url }}">
-              {{ collection.title }}
+            <a class="btn btn-secondary btn-border--none padding-13 max-width-125 width-100 t-decor--none t-align--center" href="{{ collection.url }}">
+              {{ collection.title | upcase }}
             </a>
           </div>
         </div>

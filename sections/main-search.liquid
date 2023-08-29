@@ -37,8 +37,8 @@
 {% endstyle %}
 
 
-<div class="container padding-ver-40 lg:padding-ver-100">
-  <h2 class="h2 fw-600 mb-15 t-align--center">Search</h2>
+<div class="container container__padding">
+  <h2 class="h2 mb-15 t-align--center">Search</h2>
   <form class="search d-flex j-content--center mb-30" action="/search">
     <div class="p-relative search__container">
       <input
@@ -70,8 +70,8 @@
                 </button>
               </div>
               <div class="card-body d-flex flex-cl a-item--center gap-10 mt-20">
-                <h3 class="fs-14-16 t-transf--uc fw-600">
-                  {{ results.title }}
+                <h3 class="fs-14-16">
+                  {{ results.title | upcase }}
                 </h3>
                 {% if results.price != 0 %}
                   <p class="h5 c-grey1 mb-10">

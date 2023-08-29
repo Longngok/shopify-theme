@@ -1,7 +1,16 @@
-<div class="container">
+<div class="container container__padding">
   <article>
-    <img src="{{ article.featured_image | image_url }}" alt="">
-    <h1>{{ article.title }}</h1>
+    <img
+      class="width-100"
+      src="{{ article.image | image_url }}"
+      alt="">
+    <h1 class="h1 fw-600">{{ article.title }}</h1>
     <p>{{ article.content }}</p>
+    <time class="c-grey2">{{ article.published_at | date: " %b %d, %Y" }}</time>
   </article>
+  {% paginate article.comments by 20 %}
+    {% for cmt in article.comments %}{% endfor %}
+
+    {{ paginate | default_pagination }}
+  {% endpaginate %}
 </div>

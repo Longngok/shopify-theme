@@ -1,0 +1,10 @@
+<form method="post" action="/cart/add">
+  <input
+    type="hidden"
+    name="id"
+    value="{{ product.variants.first.id }}" />
+  <input
+    type="submit"
+    value="Add to cart"
+    class="btn btn-secondary border-primary t-transf--uc padding-8-14 lg:padding-12-32" />
+</form>

@@ -1,0 +1,86 @@
+{% if template == 'product' %}
+  <ul class="d-flex mb-40 lg:mb-60 l-style--none">
+    <li class="l-style--none mr-15">
+      <a
+        class="p t-transf--uc circle-icon t-decor--none c-grey3"
+        style="color:var(--color-text--secondary)"
+        href="{{ routes.root_url }}">Home</a>
+    </li>
+    {% if collections %}
+      <li class="breadcrumb__li p-relative">
+        <a
+          class="breadcrumb__a tt-uppercase"
+          style="color:var(--color-text--secondary)"
+          href="/collections">{{ page.title }}</a>
+      </li>
+    {% endif %}
+    <li class="breadcrumb__li p-relative">
+      <a href="" class="breadcrumb__a tt-uppercase active">{{ product.title }}</a>
+    </li>
+  </ul>
+{% elsif template == 'collection' %}
+  <ul class="d-flex breadcrumb__lists">
+    <li class="breadcrumb__li p-relative">
+      <a
+        class="breadcrumb__a tt-uppercase"
+        style="color:var(--color-text--secondary)"
+        href="{{ routes.root_url }}">Home</a>
+    </li>
+    <li class="breadcrumb__li p-relative">
+      <a href="" class="breadcrumb__a tt-uppercase active">{{ collection.title }}</a>
+    </li>
+  </ul>
+{% else %}
+  <ul class="d-flex breadcrumb__lists">
+    <li class="breadcrumb__li p-relative">
+      <a
+        class="breadcrumb__a tt-uppercase"
+        style="color:var(--color-text--secondary)"
+        href="{{ routes.root_url }}">Home</a>
+    </li>
+    <li class="breadcrumb__li p-relative">
+      <a href="" class="breadcrumb__a tt-uppercase active">{{ page.title }}</a>
+    </li>
+  </ul>
+{% endif %}
+
+
+<ul class="d-flex mb-40 lg:mb-60 l-style--none">
+  <li class="l-style--none mr-15 ">
+    <a class="p t-transf--uc circle-icon t-decor--none c-grey3" href="{{ routes.root_url }}">Home</a>
+  </li>
+  <span class="d-flex a-item--center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="5"
+      height="6"
+      viewBox="0 0 5 6"
+      fill="none">
+      <circle
+        cx="2.5"
+        cy="3"
+        r="2.5"
+        fill="#9EA0A8" />
+    </svg>
+  </span>
+  <li class="padding-0-15">
+    <a class="p t-transf--uc circle-icon t-decor--none c-grey3" href="">{{ collection.title }}</a>
+  </li>
+  <span class="d-flex a-item--center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="5"
+      height="6"
+      viewBox="0 0 5 6"
+      fill="none">
+      <circle
+        cx="2.5"
+        cy="3"
+        r="2.5"
+        fill="#9EA0A8" />
+    </svg>
+  </span>
+  <li class="padding-0-15">
+    <a class="p t-transf--uc circle-icon t-decor--none c-primary" href="">{{ product.title }}</a>
+  </li>
+</ul>

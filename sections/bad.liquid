@@ -1,7 +1,7 @@
-<div class="container padding-ver-40 lg:padding-ver-100">
+<div class="container container__padding">
   <div class="mb-50 lg:mb-100">
-    <h2 class="h1 fw-600 t-transf--uc t-align--center mb-20 lg:mb-15">
-      {{ section.settings.title }}
+    <h2 class="h1 t-align--center mb-20 lg:mb-15">
+      {{ section.settings.title | upcase }}
     </h2>
     <p class="c-grey2 t-align--center">
       {{ section.settings.description }}
@@ -11,7 +11,7 @@
     <div class="d-grid grid-layout6 gap-40 lg:cl-gap-19 mb-40 lg:mb-50">
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 fw-600 t-transf--uc">title</label>
+          <label class="h4 t-transf--uc">title</label>
           <div class="p-relative">
             <select class="padding-18-20 border-grey6 cus-select width-100">
               <option value="">Miss</option>
@@ -35,7 +35,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 fw-600 t-transf--uc required">sur name</label>
+          <label class="h4 t-transf--uc required">sur name</label>
           <div class="p-relative input-box">
             <input
               class="width-100 padding-18-20 border-grey6 cus-input"
@@ -47,7 +47,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 fw-600 t-transf--uc required">first name</label>
+          <label class="h4 t-transf--uc required">first name</label>
           <div class="p-relative input-box">
             <input
               class="width-100 padding-18-20 border-grey6 cus-input"
@@ -59,7 +59,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 fw-600 t-transf--uc required">email</label>
+          <label class="h4 t-transf--uc required">email</label>
           <div class="p-relative input-box">
             <input
               class="width-100 padding-18-20 border-grey6 cus-input"
@@ -71,7 +71,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 fw-600 t-transf--uc">phone</label>
+          <label class="h4 t-transf--uc">phone</label>
           <div class="p-relative input-box">
             <input
               class="width-100 padding-18-20 border-grey6 cus-input"
@@ -83,7 +83,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 fw-600 t-transf--uc">city</label>
+          <label class="h4 t-transf--uc">city</label>
           <div class="p-relative input-box">
             <input
               class="width-100 padding-18-20 border-grey6 cus-input"
@@ -95,7 +95,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 fw-600 t-transf--uc">company</label>
+          <label class="h4 t-transf--uc">company</label>
           <div class="p-relative input-box">
             <input
               class="width-100 padding-18-20 border-grey6 cus-input"
@@ -107,7 +107,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 fw-600 t-transf--uc">province</label>
+          <label class="h4 t-transf--uc">province</label>
           <div class="p-relative">
             <select class="padding-18-20 border-grey6 cus-select width-100">
               <option value="">Agriento</option>
@@ -131,7 +131,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 fw-600 t-transf--uc">vat number</label>
+          <label class="h4 t-transf--uc">vat number</label>
           <div class="p-relative input-box">
             <input
               class="width-100 padding-18-20 border-grey6 cus-input"
@@ -143,7 +143,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 fw-600 t-transf--uc">request</label>
+          <label class="h4 t-transf--uc">request</label>
           <div class="p-relative">
             <select class="padding-18-20 border-grey6 cus-select width-100">
               <option value="">Dealer</option>
@@ -167,7 +167,7 @@
       </div>
       <div class="grid-item grid-item__message">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 fw-600 t-transf--uc">message</label>
+          <label class="h4 t-transf--uc">message</label>
           <div class="p-relative input-box">
             <textarea
               class="width-100 h5 padding-18-20 border-grey6 cus-input"

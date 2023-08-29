@@ -9,29 +9,35 @@
       <span class="h1 c-secondary">{{ shop.name }}</span>
     {% endif %}
   </div>
-  <div class="d-grid grid-layout10 gap-60 lg:gap-20 padding-50 lg:padding-70">
+  <div class="d-grid grid-layout5 gap-60 lg:gap-20 padding-50 lg:padding-70">
     {% for link in section.blocks %}
       {% case link.type %}
         {%- when 'search' -%}
         <div class="flex__item d-flex flex-cl gap-70">
-          <form class="d-flex flex-cl gap-20 lg:gap-30">
-            <label class="h5 c-grey5 l-spacing">
+          {% form 'customer', id: 'ContactFooter', class: 'd-flex flex-cl gap-20 lg:gap-30 p-relative' %}
+            <label class="h5 c-grey5">
               {{ link.settings.title | upcase }}
             </label>
-            <div class="p-relative height-41 lg:width-280">
-              <input
-                class="wh-100 padding-10 bc-dark btn-border--none"
-                type="email"
-                placeholder="Your Email">
-              <button type="submit" class="btn btn-link btn-border--none c-grey5 p-absolute top-9 right-10">Subcribe</button>
-            </div>
-          </form>
+            <input
+              id="NewsletterForm--{{ section.id }}"
+              type="email"
+              name="contact[email]"
+              class="wh-100 padding-10 bc-dark btn-border--none"
+              id=""
+              required
+              value="{{ form.email }}"
+              placeholder="Your Email">
+            <button
+              type="submit"
+              id="Subscribe"
+              class="btn btn-link btn-border--none c-grey5 p-absolute top-9 right-10">{{ block.settings.button_form }}Subscribe</button>
+          {% endform %}
 
           {% if link.settings.hide == false %}
             <div class="d-flex flex-cl gap-20 lg:gap-30">
-              <h3 class="h5 c-grey5 l-spacing fw-400">{{ link.settings.social_title | upcase }}</h3>
+              <h3 class="h5 c-grey5 fw-400">{{ link.settings.social_title | upcase }}</h3>
               <ul class="d-flex a-item--center gap-15 l-style--none">
-                <li class="max-wh-1">
+                <li class="max-wh-20">
                   <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ link.settings.facebook }}">
                     <svg
                       class="wh-100"
@@ -54,7 +60,7 @@
                     </svg>
                   </a>
                 </li>
-                <li class="max-wh-1">
+                <li class="max-wh-20">
                   <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ link.settings.instagram }}">
                     <svg
                       class="wh-100"
@@ -79,7 +85,7 @@
                     </svg>
                   </a>
                 </li>
-                <li class="max-wh-1">
+                <li class="max-wh-20">
                   <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ link.settings.linkin }}">
                     <svg
                       class="wh-100"
@@ -104,7 +110,7 @@
                     </svg>
                   </a>
                 </li>
-                <li class="max-wh-1">
+                <li class="max-wh-20">
                   <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ link.settings.youtube }}">
                     <svg
                       class="wh-100"
@@ -125,7 +131,7 @@
         {%- when 'link_list' -%}
         <div class="flex__item">
           <div class="d-flex flex-cl gap-20 lg:gap-30">
-            <h3 class="h5 c-grey5 l-spacing fw-400">{{ link.settings.title | upcase }}</h3>
+            <h3 class="h5 c-grey5 fw-400">{{ link.settings.title | upcase }}</h3>
             <ul class="d-flex flex-cl gap-15 l-style--none">
               {% for link in link.settings.footer_menu.links %}
                 <li>
@@ -141,7 +147,7 @@
         {%- when 'text' -%}
         <div class="flex__item lg:max-width-281">
           <div class="d-flex flex-cl gap-20 lg:gap-30">
-            <h3 class="h5 c-grey5 l-spacing fw-400">{{ link.settings.title | upcase }}:</h3>
+            <h3 class="h5 c-grey5 fw-400">{{ link.settings.title | upcase }}:</h3>
             <div class="d-flex flex-cl gap-15 l-style--none c-grey2">
               {{ link.settings.info_text }}
             </div>

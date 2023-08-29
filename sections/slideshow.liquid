@@ -1,34 +1,31 @@
-<div class="p-relative  oflow--hidden height-100">
+<div class="p-relative oflow--hidden height-100">
   <div class="banner-images d-flex">
     {% for block in section.blocks %}
       <div class="width-100 p-relative">
         {% if block.settings.image != blank %}
-          <img
-            class="banner-img bg-style"
-            src="{{ block.settings.image | image_url }}"
-            alt="">
+          {{ block.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'banner-img bg-style' }}
         {%- else -%}
           {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg banner-img bg-style' }}
         {% endif %}
-        <div class="container gap-25 lg:gap-45">
+        <div class="container">
           <div class="p-absolute bottom-15 lg:bottom-50">
-            <h1 class="fs-18 h1 l-spacing c-secondary mb-15 lg:mb-20 fw-600">
+            <h1 class="h1 fs-18 c-secondary mb-15 lg:mb-20">
               {{ block.settings.heading | upcase }}
             </h1>
             {% if block.settings.button_label != blank %}
-              <a class="btn btn-secondary btn-border--none t-decor--none padding-12-32" href="{{ block.settings.link }}">
-                {{ block.settings.button_label | upcase }}
-              </a>
+              {% assign btnTitle = block.settings.button_label %}
+              {% assign btnLink = block.settings.link %}
+              {% render 'btn-secondary', btnTitle: btnTitle, btnLink: btnLink %}
             {% endif %}
           </div>
         </div>
       </div>
     {% endfor %}
   </div>
-  <button class="btn btn-link btn-border--none max-wh-2 p-absolute top-50pc left-15 lg:left-50 btn-prev">
+  <button class="btn btn-link btn-border--none btn-prev max-wh-2 p-absolute top-50pc left-15 lg:left-50 btn-prev">
     {% render 'icon-prev' %}
   </button>
-  <button class="btn btn-link btn-border--none max-wh-2 p-absolute top-50pc right-15 lg:right-50 btn-next">
+  <button class="btn btn-link btn-border--none btn-next max-wh-2 p-absolute top-50pc right-15 lg:right-50 ">
     {% render 'icon-next' %}
   </button>
 </div>

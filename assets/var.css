@@ -1,4 +1,7 @@
 :root {
+  --ctpv: 4rem;
+  --ctph: 1.5rem;
+
   --color-primary: #171719;
   --color-secondary: #FFFFFF;
   --color-dark: #262628;
@@ -18,33 +21,8 @@
   --heading-large: calc(2.4 * var(--root-font-size));
   --heading-ex-large: calc(3 * var(--root-font-size));
 
-  --font-weight: 400;
-
-  --spacing-8: 0.8rem;
-  --spacing-10: 1rem;
-  --spacing-11: 1.1rem;
-  --spacing-12: 1.2rem;
-  --spacing-13: 1.3rem;
-  --spacing-14: 1.4rem;
-  --spacing-15: 1.5rem;
-  --spacing-16: 1.6rem;
-  --spacing-18: 1.8rem;
-  --spacing-20: 2rem;
-  --spacing-22: 2.2rem;
-  --spacing-23: 2.3rem;
-  --spacing-25: 2.5rem;
-  --spacing-30: 3rem;
-  --spacing-32: 3.2rem;
-  --spacing-35: 3.5rem;
-  --spacing-40: 4rem;
-  --spacing-50: 5rem;
-  --spacing-60: 6rem;
-  --spacing-70: 7rem;
-  --spacing-74: 7.4rem;
-  --spacing-80: 8rem;
-  --spacing-85: 8.5rem;
+  --body-text: calc(1.4 * var(--root-font-size));
 
   --font-family-1: 'Lato', sans-serif;
   --font-family-2: 'Be Vietnam Pro', sans-serif;
-
 }
