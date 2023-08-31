@@ -13,19 +13,21 @@
               {{ block.settings.heading | upcase }}
             </h1>
             {% if block.settings.button_label != blank %}
-              {% assign btnTitle = block.settings.button_label %}
-              {% assign btnLink = block.settings.link %}
-              {% render 'btn-secondary', btnTitle: btnTitle, btnLink: btnLink %}
+              {%- liquid
+                assign linkUrl = block.settings.link
+                assign linkContent = block.settings.button_label
+                render 'btn-secondary', btnTitle: linkContent, btnLink: linkUrl
+              -%}
             {% endif %}
           </div>
         </div>
       </div>
     {% endfor %}
   </div>
-  <button class="btn btn-link btn-border--none btn-prev max-wh-2 p-absolute top-50pc left-15 lg:left-50 btn-prev">
+  <button class="btn btn-link btn-border--none btn-prev max-wh-25 p-absolute top-50pc left-15 lg:left-50 btn-prev">
     {% render 'icon-prev' %}
   </button>
-  <button class="btn btn-link btn-border--none btn-next max-wh-2 p-absolute top-50pc right-15 lg:right-50 ">
+  <button class="btn btn-link btn-border--none btn-next max-wh-25 p-absolute top-50pc right-15 lg:right-50 ">
     {% render 'icon-next' %}
   </button>
 </div>

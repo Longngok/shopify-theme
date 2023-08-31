@@ -1,7 +1,7 @@
 <div class="container" style="overflow: hidden;">
-  <div class="d-flex gap-40 padding-13 lg:padding-0 scroll">
+  <div class="d-flex gap-40 p-block--13 mb-50 lg:mb-80 lg:padding-0 scroll">
     {% for tab in section.blocks %}
-      <button class="btn btn-link btn-success active-btn flex-item fs-18 " onclick="toggleFAQChange(this, {{ forloop.index0 }})">
+      <button class="btn btn-link btn-success flex-item fs-18 active-btn firstButton" onclick="toggleFAQChange(this, {{ forloop.index0 }})">
         {{ tab.settings.tab_title }}
       </button>
     {% endfor %}
@@ -11,7 +11,7 @@
       <div class="FAQ-change" data-faq="{{ forloop.index0 }}">
         <div class="d-flex flex-cl gap-40 lg:d-flex-row lg:j-content--sb padding-ver-40 lg:padding-80-0">
           <div class="">
-            <h2 class="h2 mb-35">
+            <h2 class="h2 fs-18 mb-35">
               {{ tab.settings.content_title | upcase }}
             </h2>
             {% for i in (1..5) %}

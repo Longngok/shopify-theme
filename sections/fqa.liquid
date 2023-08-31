@@ -1,7 +1,7 @@
 <div class="container p-relative container__padding" style="overflow: hidden;">
-  <div class="d-flex lg:j-content--center gap-40 padding-13 lg:padding-0 scroll mb-37 lg:mb-60">
+  <div class="d-flex lg:j-content--center gap-40 p-block--13 lg:padding-0 scroll mb-37 lg:mb-60">
     {% for fqa in section.blocks %}
-      <button class="btn btn-link btn-success active-btn flex-item fs-18 " onclick="toggleFAQChange(this, {{ forloop.index0 }})">
+      <button class="btn btn-link btn-success flex-item fs-18 active-btn firstButton" onclick="toggleFAQChange(this, {{ forloop.index0 }})">
         {{ fqa.settings.tab_title | upcase }}
       </button>
     {% endfor %}
@@ -14,7 +14,7 @@
           {% capture quesContent %}ques_content{{ i }}{% endcapture %}
           {% if fqa.settings[quesContent] != blank %}
             <div class="boder-bt--grey3 change-menu" onclick="toggleDropdown(this)">
-              <div class="d-flex lg:j-content--sb gap-30 padding-20-0">
+              <div class="d-flex j-content--sb gap-30 p-block--20">
                 <h3 class="h4 cursor-pointer" onclick="toggleDropdown(this)">
                   {{ fqa.settings[quesTitle] }}
                 </h3>
@@ -42,7 +42,7 @@
                 </button>
               </div>
               <div class="dropdown">
-                <p>
+                <p class="mb-30 lg:mb-40">
                   {{ fqa.settings[quesContent] }}
                 </p>
               </div>
@@ -101,7 +101,7 @@
             "default": "Title"
           },
           {
-            "type": "richtext",
+            "type": "inline_richtext",
             "id": "ques_content1",
             "label": "Question 1"
           },
@@ -111,7 +111,7 @@
             "label": "Question Title 2",
             "default": "Title2"
           }, {
-            "type": "richtext",
+            "type": "inline_richtext",
             "id": "ques_content2",
             "label": "Question 2"
           }, {
@@ -120,7 +120,7 @@
             "label": "Question Title 3",
             "default": "Title3"
           }, {
-            "type": "richtext",
+            "type": "inline_richtext",
             "id": "ques_content3",
             "label": "Question 3"
           }, {
@@ -129,7 +129,7 @@
             "label": "Question Title 4",
             "default": "Title4"
           }, {
-            "type": "richtext",
+            "type": "inline_richtext",
             "id": "ques_content4",
             "label": "Question 4"
           }, {
@@ -138,7 +138,7 @@
             "label": "Question Title 5",
             "default": "Title5"
           }, {
-            "type": "richtext",
+            "type": "inline_richtext",
             "id": "ques_content5",
             "label": "Question 5"
           }

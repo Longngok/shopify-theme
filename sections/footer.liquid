@@ -1,36 +1,38 @@
-<div class="container">
-  <div class="d-grid p-item--center border-bt-dark2 padding-40 lg:padding-50">
+<div class="container padding-block--0">
+  <div class="d-grid p-item--center border-bt-dark2 p-block--40 lg:p-block--50">
     {% if section.settings.logo != blank %}
       <img
         class="logo-ft-size lg:logo-ft-size bg-style"
         src="{{ section.settings.logo | image_url }}"
-        alt="">
+        alt="shop-logo">
     {% else %}
       <span class="h1 c-secondary">{{ shop.name }}</span>
     {% endif %}
   </div>
-  <div class="d-grid grid-layout5 gap-60 lg:gap-20 padding-50 lg:padding-70">
+  <div class="d-grid grid-1cl xs-1--column md-2--column lg-4--column gap-60 lg:gap-20 p-block--50 lg:padding-70">
     {% for link in section.blocks %}
       {% case link.type %}
         {%- when 'search' -%}
         <div class="flex__item d-flex flex-cl gap-70">
-          {% form 'customer', id: 'ContactFooter', class: 'd-flex flex-cl gap-20 lg:gap-30 p-relative' %}
+          {% form 'customer', id: 'ContactFooter', class: 'd-flex flex-cl gap-20 lg:gap-30' %}
             <label class="h5 c-grey5">
               {{ link.settings.title | upcase }}
             </label>
-            <input
-              id="NewsletterForm--{{ section.id }}"
-              type="email"
-              name="contact[email]"
-              class="wh-100 padding-10 bc-dark btn-border--none"
-              id=""
-              required
-              value="{{ form.email }}"
-              placeholder="Your Email">
-            <button
-              type="submit"
-              id="Subscribe"
-              class="btn btn-link btn-border--none c-grey5 p-absolute top-9 right-10">{{ block.settings.button_form }}Subscribe</button>
+            <div class="p-relative">
+              <input
+                id="NewsletterForm--{{ section.id }}"
+                type="email"
+                name="contact[email]"
+                class="wh-100 padding-10 bc-dark btn-border--none"
+                id=""
+                required
+                value="{{ form.email }}"
+                placeholder="Your Email">
+              <button
+                type="submit"
+                id="Subscribe"
+                class="btn btn-link btn-border--none c-grey5 p-absolute top-5 right-10">{{ block.settings.button_form }}Subscribe</button>
+            </div>
           {% endform %}
 
           {% if link.settings.hide == false %}
@@ -39,88 +41,22 @@
               <ul class="d-flex a-item--center gap-15 l-style--none">
                 <li class="max-wh-20">
                   <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ link.settings.facebook }}">
-                    <svg
-                      class="wh-100"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none">
-                      <g clip-path="url(#clip0_44_524)">
-                        <path d="M13.3317 3.32083H15.1576V0.140833C14.8426 0.0975 13.7592 0 12.4976 0C9.86507 0 8.06174 1.65583 8.06174 4.69917V7.5H5.15674V11.055H8.06174V20H11.6234V11.0558H14.4109L14.8534 7.50083H11.6226V5.05167C11.6234 4.02417 11.9001 3.32083 13.3317 3.32083Z" fill="white" />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_44_524">
-                          <rect
-                            width="20"
-                            height="20"
-                            fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
+                    {% render 'icon-facebook' %}
                   </a>
                 </li>
                 <li class="max-wh-20">
                   <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ link.settings.instagram }}">
-                    <svg
-                      class="wh-100"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none">
-                      <g clip-path="url(#clip0_44_527)">
-                        <path d="M19.9795 5.88005C19.9326 4.81738 19.7608 4.0868 19.5146 3.45374C19.2606 2.78176 18.8699 2.18014 18.3581 1.68002C17.8579 1.1721 17.2523 0.777435 16.5882 0.527447C15.9514 0.281274 15.2247 0.109427 14.162 0.0625732C13.0914 0.0117516 12.7515 0 10.0361 0C7.32076 0 6.98088 0.0117516 5.91423 0.0586052C4.85156 0.105459 4.12098 0.277459 3.48807 0.523479C2.81594 0.777435 2.21432 1.16814 1.71419 1.68002C1.20628 2.18014 0.811767 2.78573 0.561626 3.44992C0.315454 4.0868 0.143607 4.81341 0.0967529 5.87609C0.0459312 6.9467 0.0341797 7.28658 0.0341797 10.002C0.0341797 12.7173 0.0459312 13.0572 0.0927849 14.1239C0.139638 15.1865 0.311639 15.9171 0.557811 16.5502C0.811767 17.2221 1.20628 17.8238 1.71419 18.3239C2.21432 18.8318 2.81991 19.2265 3.4841 19.4765C4.12098 19.7226 4.84759 19.8945 5.91042 19.9413C6.97691 19.9883 7.31694 19.9999 10.0323 19.9999C12.7477 19.9999 13.0876 19.9883 14.1542 19.9413C15.2169 19.8945 15.9475 19.7226 16.5804 19.4765C17.9245 18.9568 18.9872 17.8941 19.5068 16.5502C19.7528 15.9133 19.9248 15.1865 19.9717 14.1239C20.0185 13.0572 20.0303 12.7173 20.0303 10.002C20.0303 7.28658 20.0263 6.9467 19.9795 5.88005ZM18.1784 14.0457C18.1354 15.0225 17.9713 15.5499 17.8346 15.9015C17.4985 16.7728 16.807 17.4643 15.9357 17.8004C15.5841 17.9372 15.0528 18.1012 14.0799 18.1441C13.025 18.1911 12.7086 18.2027 10.0401 18.2027C7.37158 18.2027 7.05123 18.1911 6.00016 18.1441C5.0234 18.1012 4.49596 17.9372 4.14433 17.8004C3.71074 17.6402 3.31607 17.3862 2.99573 17.0541C2.66363 16.7298 2.40967 16.3391 2.24942 15.9055C2.11268 15.5539 1.94862 15.0225 1.90573 14.0497C1.85872 12.9948 1.84712 12.6783 1.84712 10.0097C1.84712 7.34122 1.85872 7.02087 1.90573 5.96995C1.94862 4.99319 2.11268 4.46575 2.24942 4.11412C2.40967 3.68038 2.66363 3.28586 2.99969 2.96536C3.32385 2.63327 3.71455 2.37931 4.14829 2.21921C4.49992 2.08247 5.03134 1.9184 6.00412 1.87537C7.05902 1.82851 7.37555 1.81676 10.0439 1.81676C12.7164 1.81676 13.0328 1.82851 14.0839 1.87537C15.0606 1.9184 15.5881 2.08247 15.9397 2.21921C16.3733 2.37931 16.7679 2.63327 17.0883 2.96536C17.4204 3.28967 17.6743 3.68038 17.8346 4.11412C17.9713 4.46575 18.1354 4.99701 18.1784 5.96995C18.2253 7.02484 18.237 7.34122 18.237 10.0097C18.237 12.6783 18.2253 12.9908 18.1784 14.0457Z" fill="white" />
-                        <path d="M10.0362 4.86401C7.19976 4.86401 4.89844 7.16518 4.89844 10.0017C4.89844 12.8383 7.19976 15.1395 10.0362 15.1395C12.8727 15.1395 15.1739 12.8383 15.1739 10.0017C15.1739 7.16518 12.8727 4.86401 10.0362 4.86401ZM10.0362 13.3344C8.19605 13.3344 6.70345 11.842 6.70345 10.0017C6.70345 8.16147 8.19605 6.66902 10.0362 6.66902C11.8764 6.66902 13.3689 8.16147 13.3689 10.0017C13.3689 11.842 11.8764 13.3344 10.0362 13.3344Z" fill="white" />
-                        <path d="M16.5767 4.66097C16.5767 5.32333 16.0397 5.86039 15.3772 5.86039C14.7148 5.86039 14.1777 5.32333 14.1777 4.66097C14.1777 3.99846 14.7148 3.46155 15.3772 3.46155C16.0397 3.46155 16.5767 3.99846 16.5767 4.66097Z" fill="white" />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_44_527">
-                          <rect
-                            width="20"
-                            height="20"
-                            fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
+                    {% render 'icon-instagram' %}
                   </a>
                 </li>
                 <li class="max-wh-20">
                   <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ link.settings.linkin }}">
-                    <svg
-                      class="wh-100"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none">
-                      <g clip-path="url(#clip0_44_532)">
-                        <path d="M19.9965 19.9998V19.999H20.0015V12.664C20.0015 9.07569 19.229 6.31152 15.034 6.31152C13.0173 6.31152 11.664 7.41819 11.1115 8.46735H11.0532V6.64652H7.07568V19.999H11.2173V13.3874C11.2173 11.6465 11.5473 9.96319 13.7032 9.96319C15.8273 9.96319 15.859 11.9499 15.859 13.499V19.9998H19.9965Z" fill="white" />
-                        <path d="M0.328125 6.64771H4.47479V20.0002H0.328125V6.64771Z" fill="white" />
-                        <path d="M2.40167 0C1.07583 0 0 1.07583 0 2.40167C0 3.7275 1.07583 4.82583 2.40167 4.82583C3.7275 4.82583 4.80333 3.7275 4.80333 2.40167C4.8025 1.07583 3.72667 0 2.40167 0V0Z" fill="white" />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_44_532">
-                          <rect
-                            width="20"
-                            height="20"
-                            fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
+                    {% render 'icon-linkin' %}
                   </a>
                 </li>
                 <li class="max-wh-20">
                   <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ link.settings.youtube }}">
-                    <svg
-                      class="wh-100"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none">
-                      <path d="M18.9789 5.31349C18.7628 4.51023 18.1295 3.87703 17.3264 3.66074C15.8591 3.25928 9.99 3.25928 9.99 3.25928C9.99 3.25928 4.12113 3.25928 2.65388 3.64552C1.86619 3.86158 1.21742 4.51035 1.00136 5.31349C0.615234 6.78062 0.615234 9.82327 0.615234 9.82327C0.615234 9.82327 0.615234 12.8812 1.00136 14.333C1.21765 15.1362 1.85074 15.7694 2.654 15.9857C4.13658 16.3873 9.99023 16.3873 9.99023 16.3873C9.99023 16.3873 15.8591 16.3873 17.3264 16.001C18.1296 15.7848 18.7628 15.1516 18.9791 14.3485C19.3651 12.8812 19.3651 9.83871 19.3651 9.83871C19.3651 9.83871 19.3806 6.78062 18.9789 5.31349ZM8.12141 12.6342V7.01237L13.0019 9.82327L8.12141 12.6342Z" fill="white" />
-                    </svg>
+                    {% render 'icon-youtube' %}
                   </a>
                 </li>
               </ul>
@@ -135,9 +71,9 @@
             <ul class="d-flex flex-cl gap-15 l-style--none">
               {% for link in link.settings.footer_menu.links %}
                 <li>
-                  <a class="d-iblock t-decor--none c-grey2" href="{{ link.url }}">
-                    {{ link.title }}
-                  </a>
+                  {% assign linkContent = link.title %}
+                  {% assign linkUrl = link.url %}
+                  {{ linkContent | link_to: linkUrl, class: 'd-iblock t-decor--none c-grey2' }}
                 </li>
               {% endfor %}
             </ul>

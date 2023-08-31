@@ -38,7 +38,7 @@
 
 
 <div class="container container__padding">
-  <h2 class="h2 mb-15 t-align--center">Search</h2>
+  <h2 class="h2 fs-18 mb-15 t-align--center">Search</h2>
   <form class="search d-flex j-content--center mb-30" action="/search">
     <div class="p-relative search__container">
       <input
@@ -53,24 +53,24 @@
     </div>
   </form>
   {% if search.results.size > 0 %}
-    <div class="d-grid grid-layout8 r-gap-40 lg:r-gap-60 gap-15 lg:gap-18 padding-13 lg:padding-0">
+    <div class="d-grid xs-2--column lg-4--column r-gap-40 lg:r-gap-60 gap-15 lg:gap-18 p-block--13 lg:padding-0">
       {% for results in search.results %}
         {% if results.object_type == 'product' %}
           <div class="grid__item">
             <div class="card d-flex flex-cl a-item--center">
               <div class="p-relative product-img">
                 <a class="d-iblock card-img p-relative wh-100" href="{{ results.url }}">
-                  <img
-                    class="wh-100 bg-style"
-                    src="{{ results.featured_image | image_url }}"
-                    alt="">
+                  {%- liquid
+                    assign main_img = results.featured_image
+                    render 'image', main_img: main_img
+                  -%}
                 </a>
-                <button class="btn btn-link btn-border--none max-wh-1 p-absolute top-20 right-20">
+                <button class="btn btn-link btn-border--none max-wh-20 p-absolute top-20 right-20">
                   {% render 'icon-heart' %}
                 </button>
               </div>
               <div class="card-body d-flex flex-cl a-item--center gap-10 mt-20">
-                <h3 class="fs-14-16">
+                <h3 class="h5 fs-16">
                   {{ results.title | upcase }}
                 </h3>
                 {% if results.price != 0 %}

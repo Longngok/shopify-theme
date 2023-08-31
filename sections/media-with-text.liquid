@@ -17,12 +17,15 @@
   }
 {% endstyle %}
 
-<div class="container d-grid grid-layout4">
+<div class="container d-grid xs-1--column lg-2--column">
   <div class="{{ section.settings.img_aligment }}">
     {% if section.settings.img_video == "video" %}
       <div class="video-wrapper p-relative height-100">
         {% if section.settings.img != blank %}
-          {{ section.settings.img | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'wh-100 bg-style' }}
+          {%- liquid
+            assign main_img = section.setting.img
+            render 'image', main_img: main_img
+          -%}
         {% else %}
           {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg wh-100' }}
         {% endif %}
@@ -35,7 +38,10 @@
       </div>
     {% elsif section.settings.img_video == "img" %}
       {% if section.settings.img != blank %}
-        {{ section.settings.img | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'wh-100 bg-style' }}
+        {%- liquid
+          assign main_img = section.setting.img
+          render 'image', main_img: main_img
+        -%}
       {% else %}
         {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg wh-100' }}
       {% endif %}
@@ -50,9 +56,11 @@
     </p>
 
     {% if section.settings.button != blank %}
-      {% assign btnLink = section.settings.link %}
-      {% assign btnTitle = section.settings.button %}
-      {% render 'btn-secondary', btnTitle: btnTitle, btnLink: btnLink %}
+      {%- liquid
+        assign linkUrl = section.settings.link
+        assign linkContent = section.settings.button
+        render 'btn-secondary', btnTitle: linkContent, btnLink: linkUrl
+      -%}
     {% endif %}
   </div>
 </div>
@@ -62,18 +70,16 @@
     class="btn-close"
     onclick="closeVideo()">&times;</button>
   {% if section.settings.video_embed != blank %}
-    {% assign video-id = section.settings.video_embed %}
-    {{ media | external_video_url: video-id | external_video_tag }}
+    {% assign video-id = section.settings.video_embed | split: '=' | last %}
+    <iframe
+      id="videoPlayer"
+      width="300"
+      height="300"
+      src="https://www.youtube.com/embed/{{ video-id }}"
+      title="Louis VUITTON High Jewelry Campaign 2019 Savoir Faire"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
   {%- else -%}
-    {% for media in section.blocks %}
-      {% if media.media_type == 'external_video' %}
-        {% if media.host == 'youtube' %}
-          {{ media | external_video_url: color: 'white' | external_video_tag }}
-        {% elsif media.host == 'vimeo' %}
-          {{ media | external_video_url: loop: '1', muted: '1' | external_video_tag }}
-        {% endif %}
-      {% endif %}
-    {% endfor %}
     <iframe
       id="videoPlayer"
       width="300"

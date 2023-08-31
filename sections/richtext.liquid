@@ -1,5 +1,9 @@
 {% style %}
-  {% if section.settings.background != blank %}{% endif %}
+  {% if section.settings.background != blank %}
+    .bg-img {
+      background-image: url('{{ section.settings.background | image_url }}');
+    }
+  {% endif %}
   .richtext__padding {
     padding: {{ section.settings.sm_padding | append: 'rem' }}
     var(--ctph);

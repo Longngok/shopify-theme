@@ -8,8 +8,10 @@
           <p class="totals__subtotal-value">
             {% assign total_price = 0 %}
             {% for item in cart.items %}
-              {% assign product_price = item.product.price | times: item.quantity %}
-              {% assign total_price = total_price | plus: product_price %}
+              {%- liquid
+                assign product_price = item.product.price | times: item.quantity
+                assign total_price = total_price | plus: product_price
+              -%}
             {% endfor %}
             {{ total_price | money }}
           </p>

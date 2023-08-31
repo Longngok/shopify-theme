@@ -1,4 +1,0 @@
-@font-face {
-    font-family: "Lato";
-    src: url("{{ '[Lato-Semibold.woff2]' | file_url }}") format("[woff2]");
-}

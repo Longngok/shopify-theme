@@ -1,1 +1,36 @@
-<div class="container"></div>
+<div class="container">
+  {%- paginate blog.articles by 6 -%}
+    <div class="main-blog page-width section-{{ section.id }}-padding">
+      <h1 class="h1 mb-40">
+        {{ blog.title | escape }}
+      </h1>
+
+      <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
+        {%- for article in blog.articles -%}
+          <div class="mb-60">
+            {%- render 'article-card' 
+              , article: article,
+              media_height: section.settings.image_height,
+              media_aspect_ratio: article.image.aspect_ratio,
+              show_image: section.settings.show_image,
+              show_date: section.settings.show_date,
+              show_author: section.settings.show_author,
+              show_excerpt: true -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endpaginate -%}
+  <div class="d-flex j-content--center">
+    <a class="btn btn-primary btn-border--none padding-12-32 t-decor--none t-transf--uc" href="{{ routes.collections_url }}">
+      Back to shopping now
+    </a>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Blog",
+    "tag": "section"
+  }
+{% endschema %}

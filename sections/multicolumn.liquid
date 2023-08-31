@@ -46,7 +46,7 @@
                   <img
                     class="wh-40"
                     src="{{ column.settings.box_img | image_url }}"
-                    alt="">
+                    alt="{{ column.settings.box_img.alt }}">
                 {% else %}
                   {% render 'icon-box' %}
                 {% endif %}
@@ -75,7 +75,7 @@
                   <img
                     class="wh-40"
                     src="{{ column.settings.box_img | image_url }}"
-                    alt="">
+                    alt="{{ column.settings.box_img.alt }}">
                 {% else %}
                   {% render 'icon-box' %}
                 {% endif %}
@@ -103,7 +103,7 @@
     </div>
     {% if section.settings.hide == false %}
       <div class="t-align--center mt-40 lg:mt-80">
-        <h3 class="fs-14-16 mb-15">
+        <h3 class="h5 fs-16 mb-15">
           {{ section.settings.additional_title | upcase }}
         </h3>
         <div class="c-grey2">
@@ -181,10 +181,10 @@
         "label": "Column",
         "options": [
           {
-            "value": "grid-layout5",
+            "value": "xs-1--column md-2--column lg-4--column",
             "label": "4 colunm"
           }, {
-            "value": "grid-layout11",
+            "value": "xs-1--column md-2--column lg-3--column",
             "label": "3 colunm"
           }
         ]

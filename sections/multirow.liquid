@@ -2,19 +2,17 @@
   <div class="d-flex flex-cl gap-70 lg:gap-100">
     {% for row in section.blocks %}
 
-      <div class="card d-flex flex-cl lg:d-flex-row lg:a-item--center gap-30 lg:gap-100">
-        <div class="width-100 {{ row.settings.img_aligment }}">
+      <div class="d-grid xs-1--column lg-2--column lg:a-item--center gap-30 lg:gap-100">
+        <div class="wh-100 {{ row.settings.img_aligment }}">
           {% if row.settings.img != blank %}
-            <img
-              class=" width-100 "
-
-              src="{{ row.settings.img | image_url }}"
-              alt="">
+            {%- liquid
+                assign main_img = row.settings.img
+                render 'image', main_img: main_img 
+              -%}
           {% else %}
-            {{ 'product-1' | placeholder_svg_tag: 'card-img lg:max-wh-1 width-100 ' }}
+            {{ 'product-1' | placeholder_svg_tag: 'card-img lg:max-wh-50 width-100 ' }}
           {% endif %}
         </div>
-
         <div class="card-body">
           {% if row.settings.svg-icon != blank %}
             <div class="mb-30">

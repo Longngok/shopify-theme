@@ -1,4 +1,10 @@
-<div class="container padding-30-0 lg:padding-151">
+{% style %}
+  .bg-img {
+    background-image: url('{{ section.settings.background | image_url }}');
+  }
+{% endstyle %}
+
+<div class="container p-block--30 lg:p-block--151">
   <h1 class="h1 c-secondary mb-5">
     {{ collection.title | upcase }}
   </h1>

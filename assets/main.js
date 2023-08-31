@@ -1,3 +1,4 @@
+//Toggle and submenu 
 function togglebar() {
     var navResponsiveElements = document.getElementsByClassName('dropdown-menu');
     var togglebarElements = document.getElementsByClassName('toggle');
@@ -11,8 +12,6 @@ function togglebar() {
     for (var j = 0; j < togglebarElements.length; j++) {
       togglebarElements[j].classList.toggle('change');
     }
-  
-    // Kiểm tra trạng thái hiện tại của SVG và thay đổi nội dung tương ứng
     if (svg1.style.display === 'block') {
       svg1.style.display = 'none';
       svg2.style.display = 'block';
@@ -22,15 +21,15 @@ function togglebar() {
     }
   }
   
-  
+
+
+  // SlideShow
   document.addEventListener("DOMContentLoaded", function() {
     const prevButtons = document.querySelectorAll(".btn-prev");
     const nextButtons = document.querySelectorAll(".btn-next");
     const bannerImages = document.querySelector(".banner-images");
     const imageWidth = 100; // Độ rộng của mỗi ảnh trong slideshow, tính bằng phần trăm
-  
     let currentPosition = 0;
-  
     prevButtons.forEach(function(prevButton) {
       prevButton.addEventListener("click", () => {
         currentPosition -= imageWidth;
@@ -40,7 +39,6 @@ function togglebar() {
         bannerImages.style.transform = `translateX(-${currentPosition}%)`;
       });
     });
-  
     nextButtons.forEach(function(nextButton) {
       nextButton.addEventListener("click", () => {
         currentPosition += imageWidth;
@@ -66,11 +64,11 @@ function togglebar() {
       dropdownMenu.style.maxHeight = "0";
     }
   }
-  
+
   
   window.addEventListener('DOMContentLoaded', (event) => {
-    var firstButton = document.querySelector('.btn');
-    toggleFAQChange(firstButton, 0);
+    var firstButton = document.querySelector('.firstButton');
+    toggleFAQChange(firstButton, 0); // Đặt trạng thái active cho tab đầu tiên
   });
   
   function toggleFAQChange(button, faqNumber) {
@@ -82,76 +80,61 @@ function togglebar() {
         faqChanges[i].style.display = "none";
       }
     }
-  
     var buttons = document.getElementsByClassName("btn");
     for (var i = 0; i < buttons.length; i++) {
       buttons[i].classList.remove("active-btn");
     }
-  
     button.classList.add("active-btn");
   }
   
-  var currentIndex = 0; // Biến lưu chỉ số hiện tại của ảnh
-  
+
+  //Image thumbnail product
+  var currentIndex = 0; 
   function showImage(index) {
     var largeImage = document.getElementById("large-image");
     var thumbnails = document.getElementsByClassName("thumbnail");
-  
-    // Remove active class from all thumbnails
     for (var i = 0; i < thumbnails.length; i++) {
       thumbnails[i].classList.remove("active");
     }
-  
-    // Add active class to the clicked thumbnail
     thumbnails[index].classList.add("active");
-  
-    // Update the large image source
     largeImage.src = thumbnails[index].src;
   
-    currentIndex = index; // Cập nhật chỉ số hiện tại của ảnh
+    currentIndex = index;
   }
   
   function nextImage() {
     var thumbnails = document.getElementsByClassName("thumbnail");
-  
-    // Tăng chỉ số hiện tại lên 1 (nếu không vượt quá số lượng ảnh)
     currentIndex = (currentIndex + 1) % thumbnails.length;
-  
-    // Hiển thị ảnh tiếp theo
     showImage(currentIndex);
   }
-  
   function previousImage() {
     var thumbnails = document.getElementsByClassName("thumbnail");
-  
-    // Giảm chỉ số hiện tại xuống 1 (nếu không nhỏ hơn 0)
     currentIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
-  
-    // Hiển thị ảnh trước đó
     showImage(currentIndex);
   }
   
-  
+
+
+  //Btn tăng giảm số lượng
   function decreaseQuantity(event) {
-    event.preventDefault(); // Ngăn chặn hành vi mặc định của sự kiện click
-  
+    event.preventDefault();
     var quantityInput = document.querySelector(".quantity-input");
     var quantity = parseInt(quantityInput.value);
-  
     if (quantity > 1) {
       quantityInput.value = quantity - 1;
     }
   }
-  
   function increaseQuantity(event) {
-    event.preventDefault(); // Ngăn chặn hành vi mặc định của sự kiện click
-  
+    event.preventDefault();
     var quantityInput = document.querySelector(".quantity-input");
     var quantity = parseInt(quantityInput.value);
-  
     quantityInput.value = quantity + 1;
   }
-  
+
+
+
+
+  //video play
   function playVideo() {
     var videoOverlay = document.getElementById('videoOverlay');
     var videoPlayer = document.getElementById('videoPlayer');
@@ -159,7 +142,6 @@ function togglebar() {
     videoOverlay.classList.remove('hide');
     videoPlayer.play();
   }
-  
   function closeVideo() {
     var videoOverlay = document.getElementById('videoOverlay');
     var videoPlayer = document.getElementById('videoPlayer');
@@ -168,50 +150,6 @@ function togglebar() {
     videoPlayer.pause();
     videoPlayer.currentTime = 0;
   }
-  
-  
-  function translateWebsite(language) {
-    // Gửi yêu cầu dịch qua API
-    var apiKey = 'YOUR_API_KEY';
-    var endpoint = 'https://translation.googleapis.com/language/translate/v2';
-    var targetElements = $('[data-translate]'); // Chọn tất cả các phần tử có thuộc tính "data-translate"
-  
-    $.each(targetElements, function(index, element) {
-        var textToTranslate = $(element).text();
-  
-        $.ajax({
-            url: endpoint,
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                q: textToTranslate,
-                target: language,
-                key: apiKey
-            },
-            success: function(response) {
-                if (response.data && response.data.translations && response.data.translations.length > 0) {
-                    var translatedText = response.data.translations[0].translatedText;
-                    $(element).text(translatedText);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('Translation request failed:', error);
-            }
-        });
-    });
-  }
-  
-   document.addEventListener("DOMContentLoaded", function() {
-          var classToCheck = document.querySelectorAll(".d-flex");
-          for (var i = 0; i < classToCheck.length; i++) {
-              classToCheck[i].addEventListener("click", function() {
-                  var checkbox = this.querySelector("input[type='checkbox']");
-                  checkbox.checked = !checkbox.checked;
-              });
-          }
-      });
-  
-  
   
   
   

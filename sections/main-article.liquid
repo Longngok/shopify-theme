@@ -1,16 +1,23 @@
-<div class="container container__padding">
+<div class="container">
   <article>
     <img
-      class="width-100"
+      class="width-100 mb-40"
       src="{{ article.image | image_url }}"
-      alt="">
-    <h1 class="h1 fw-600">{{ article.title }}</h1>
-    <p>{{ article.content }}</p>
-    <time class="c-grey2">{{ article.published_at | date: " %b %d, %Y" }}</time>
+      alt="{{ article.image.alt }}">
+    <h1 class="h1 mb-40">{{ article.title | upcase }}</h1>
+    <time class="c-grey2 mb-40 d-block">{{ article.published_at | date: " %b %d, %Y" }}</time>
+    <div class="mb-40">
+      <p>{{ article.content }}</p>
+    </div>
+    {% paginate article.comments by 20 %}
+      {% for cmt in article.comments %}
+        {{ paginate | default_pagination }}
+      {% endfor %}
+    {% endpaginate %}
+    <div class="d-flex j-content--center">
+      <a class="d-iblock t-decor--none t-transf--uc  btn btn-primary btn-border--none c-secondary padding-12-32" href="{{ blog.url }}">
+        back to blog
+      </a>
+    </div>
   </article>
-  {% paginate article.comments by 20 %}
-    {% for cmt in article.comments %}{% endfor %}
-
-    {{ paginate | default_pagination }}
-  {% endpaginate %}
 </div>
