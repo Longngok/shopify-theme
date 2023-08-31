@@ -11,8 +11,7 @@
     {{ form.errors | default_errors }}
     <div class="d-grid layout__bad lg-2--column gap-40 lg:cl-gap-19 mb-40 lg:mb-50">
       <div class="grid-item">
-        <div
-          class="d-flex flex-cl gap-11">
+        <div class="d-flex flex-cl gap-11">
           <label class="h4 t-transf--uc">title</label>
           <div class="p-relative">
             <select
@@ -73,7 +72,7 @@
             <input
               id="email"
               name="contact[email]"
-              type="text"
+              type="email"
               class="width-100 padding-18-20 border-grey6 cus-input"
               required>
             <span class="content-custome c-grey3">Insert your Email</span>
@@ -87,7 +86,7 @@
             <input
               id="phone"
               name="contact[phone]"
-              type="text"
+              type="number"
               pattern="[0-9\-]*"
               class="width-100 padding-18-20 border-grey6 cus-input"
               required>
