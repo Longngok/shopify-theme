@@ -24,8 +24,9 @@ html {
   font-weight: 600;
 }
 
-.fs-18 {
-  font-size: 1.8rem;
+.h1
+{
+  font-size: var(--heading-medium);
 }
 
 .h3 {
@@ -39,6 +40,11 @@ html {
 .h5 {
   font-size: var(--heading-ex-small);
 }
+
+.fs-18 {
+  font-size: 1.8rem;
+}
+
 
 .p {
   font-family: var(--font-family-2);
@@ -84,6 +90,12 @@ html {
 .wh-20 {
   width: 2rem;
   height: 2rem;
+}
+
+.wh-40
+{
+  width: 4rem;
+  height: 4rem;
 }
 
 .wh-100 {
@@ -186,9 +198,9 @@ html {
   padding: 6rem 3rem;
 }
 
-/* .padding-40 {
-  padding: 4rem 0;
-} */
+.p-block--40 {
+  padding-block: 4rem;
+}
 
 .p-block--50 {
   padding-block: 5rem;

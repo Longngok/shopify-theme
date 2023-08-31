@@ -23,7 +23,7 @@
       <div class="video-wrapper p-relative height-100">
         {% if section.settings.img != blank %}
           {%- liquid
-            assign main_img = section.setting.img
+            assign main_img = section.settings.img
             render 'image', main_img: main_img
           -%}
         {% else %}
@@ -39,7 +39,7 @@
     {% elsif section.settings.img_video == "img" %}
       {% if section.settings.img != blank %}
         {%- liquid
-          assign main_img = section.setting.img
+          assign main_img = section.settings.img
           render 'image', main_img: main_img
         -%}
       {% else %}

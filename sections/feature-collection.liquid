@@ -7,7 +7,7 @@
       {% for collection in section.settings.collection limit: 4 -%}
         <div class="grid__item width-100 rectangle__narrow">
           <div class="card p-relative wh-100">
-            {{ collection.featured_image | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'card-img wh-100 bg-style cube__content' }}
+            {{ collection.featured_image | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'wh-100 bg-style cube__content' }}
             <div class="card-body d-grid p-item--center p-absolute left-0 right-0 bottom-10 lg:bottom-30">
               {{ collection.title | upcase | link_to: collection.url, class: 'btn btn-secondary btn-border--none p-block--13 max-width-125 width-100 t-decor--none t-align--center' }}
             </div>
@@ -18,7 +18,7 @@
       {% for i in (1..4) %}
         <div class="grid__item width-100">
           <div class="card p-relative rectangle__narrow">
-            {{ 'collection-apparel-1' | placeholder_svg_tag: 'placeholder-svg cube__content card-img wh-100' }}
+            {{ 'collection-apparel-1' | placeholder_svg_tag: 'placeholder-svg cube__content wh-100' }}
             <div class="card-body d-grid p-item--center p-absolute left-0 right-0 bottom-10 lg:bottom-30">
               <a class="btn btn-secondary btn-border--none p-block--13 max-width-125 width-100 t-decor--none t-align--center t-transf--uc" href="">
                 Your title
