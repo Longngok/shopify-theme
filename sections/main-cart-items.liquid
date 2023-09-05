@@ -26,7 +26,7 @@
             {% assign price = item.product.price | split: "," %}
             <tr>
               <td class="">
-                <div class="cart__img">
+                <div class="max-width-125">
                   <a class="d-iblock pt-40" href="{{ item.product.url }}">
                     {% if item.image != blank %}
                       {%- liquid

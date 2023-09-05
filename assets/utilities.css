@@ -2,12 +2,6 @@ html {
   font-size: 62.5%;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
 body{
   font-family: var(--font-family-1);
   font-size: var(--body-text);
@@ -15,6 +9,17 @@ body{
   color: var(--color-primary);
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.font-ih
+{
+  font: inherit;
 }
 
 /*--font--*/
@@ -124,6 +129,10 @@ body{
 }
 
 /*--padding--*/
+.pl-4
+{
+  padding-left: .4rem;
+}
 .pt-40 {
   padding-top: 4rem;
 }
@@ -352,8 +361,8 @@ body{
 .top-50pc {
   top: 50%;
 }
-.top-5 {
-  top: .5rem;
+.top-8{
+  top: .8rem;
 }
 
 .top-20 {
@@ -448,7 +457,7 @@ body{
 }
 
 .d-block {
-  display: block !important;
+  display: block;
 }
 
 .z-index-100 {

@@ -76,7 +76,7 @@
               </span>
             </label>
             <div class="p-relative">
-              <select class="padding-18-20 border-grey6 cus-select width-100">
+              <select class="padding-18-20 border-grey6 cus-select width-100 font-ih">
                 {% for variants in product.variants %}
                   <option value="{{ variants.id }}">{{ variants.title }}</option>
                 {% endfor %}
@@ -102,7 +102,7 @@
             <div class="quantity-button d-flex border-grey6 height-100 lg-max-width-150">
               <button class="minus-btn btn btn-link btn-border--none padding-11-18" onclick="decreaseQuantity(event)">-</button>
               <input
-                class="p quantity-input t-align--center btn-border--none padding-11-auto width-100"
+                class="pl-4 quantity-input t-align--center btn-border--none padding-11-auto width-100 font-ih"
                 type="number"
                 value="1"
                 readonly>
@@ -117,7 +117,7 @@
             <input
               type="submit"
               value="Add to cart"
-              class="btn btn-secondary border-grey6 p-block--13 t-transf--uc wh-100" />
+              class="btn btn-secondary border-grey6 p-block--13 t-transf--uc wh-100 font-ih" />
           </div>
           <div class="grid-item lg-grid__col--34">
             <button class="btn btn-secondary border-grey6 padding-15 height-52">
@@ -140,7 +140,7 @@
             type="hidden"
             name="quantity"
             value="1" />
-          <button type="submit" class="btn btn-primary border-grey6 padding-13-15 t-align--center t-decor--none t-transf--uc width-100">Buy Now</button>
+          <button type="submit" class="btn btn-primary border-grey6 padding-13-15 t-align--center t-decor--none t-transf--uc width-100 font-ih">Buy Now</button>
         </form>
       </div>
       <span class="l-spacing d-none lg-d-iblock padding-7-18 mb-50 bc-grey0 lg-mt-30">
@@ -149,7 +149,7 @@
       <p class="c-grey2 mt-30 lg-mt-0 mb-40">
         {{ product.description }}
       </p>
-      <h2 class="h-xs mb-40">
+      <h2 class="h-xs mb-30">
         {{ section.settings.gift_title | upcase }}
       </h2>
       {% if section.settings.img != blank %}

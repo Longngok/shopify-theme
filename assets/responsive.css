@@ -275,10 +275,6 @@
     grid-template-columns: 1fr 4fr 1fr;
   }
 
-  .layout__annoucement .grid__item:nth-child(1) {
-    grid-column: 2 / 3;
-  }
-
   .lg-2--column
   {
     grid-template-columns: repeat(2, 1fr);
@@ -371,7 +367,6 @@
   .dropdown-grandchild {
     padding: 1rem;
     min-width: 150px;
-    z-index: 1;
   }
 
   /*--liquid custome--*/

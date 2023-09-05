@@ -10,7 +10,6 @@
 .bar1,
 .bar2,
 .bar3 {
-  width: 100%;
   height: 0.1rem;
   background-color: var(--color-primary);
   color: var(--color-primary);
@@ -220,6 +219,12 @@
   animation: hover-animation 1.5s forwards linear;
 }
 
+/* .card:hover .sc-img
+{
+  transform: scale(1.1);
+  transition: .5s;
+} */
+
 .content-custome {
   position: absolute;
   top: 1.5rem;
@@ -304,7 +309,7 @@ input[type=checkbox]:checked {
 
 .btn-search--position {
   right: 1rem;
-  top: 1.5rem;
+  top: 2rem;
 }
 .rs__container {
   height: 15rem;
