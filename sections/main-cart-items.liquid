@@ -2,12 +2,11 @@
 {%- if cart != empty -%}
   <div class="container container__padding">
     <div class="d-flex j-content--sb a-item--center mb-30">
-      <h2 class="h1  c-primary t-transf--uc t-align--center">Your cart</h2>
+      <h2 class="h-2xl h-md c-primary t-transf--uc t-align--center">Your cart</h2>
       <a class="c-primary" href="{{ section.settings.link }}">Continue shopping</a>
     </div>
     <form action="" class="cart-items">
-      <table
-        class="width-100">
+      <table class="width-100">
         <thead>
           <tr class="mb-18">
             <th class="t-align--start c-primary">
@@ -54,10 +53,10 @@
                 <div class="d-flex a-item--center">
                   <div class="d-flex a-item--center gap-15">
                     <div class="flex-item">
-                      <div class="quantity-button d-flex border-grey6 height-100 lg:max-width-150">
+                      <div class="quantity-button d-flex border-grey6 height-100 lg-max-width-150">
                         <button class="minus-btn btn btn-link btn-border--none padding-11-18" onclick="decreaseQuantity(event)">-</button>
                         <input
-                          class="p quantity-input t-align--center btn-border--none p-block--11 width-40 lg:width-100pc"
+                          class="p quantity-input t-align--center btn-border--none p-block--11 width-40 lg-width-100pc"
                           type="number"
                           value="1"
                           readonly>
@@ -100,7 +99,7 @@
   </div>
 {% else %}
   <div class="container container__padding">
-    <h2 class="h1 c-primary mb-30 t-align--center t-transf--uc">Your cart is empty</h2>
+    <h2 class="h-2xl h-md c-primary mb-30 t-align--center t-transf--uc">Your cart is empty</h2>
     <div class="d-flex j-content--center">
       <a href="{{ section.settings.link }}" class="btn btn-primary d-iblock padding-10 t-decor--none">Continue shopping</a>
     </div>

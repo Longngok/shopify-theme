@@ -1,0 +1,41 @@
+<div class="grid__item">
+  <div class="card d-flex flex-cl a-item--center">
+    <div class="p-relative square width-100">
+      <a class="card-img d-iblock cube__content" href="{{ product.url }}">
+        {{ product.featured_image | image_url: width: 3840 | image_tag: loading: 'lazy', class: 'wh-100 bg-style' }}
+      </a>
+      <button class="btn btn-link btn-border--none max-wh-1 p-absolute top-20 right-20">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none">
+          <path d="M9.99994 19.1665C9.88828 19.1665 9.78078 19.1215 9.70327 19.0423L1.52994 10.7332C-0.506725 8.664 -0.506725 5.29567 1.52994 3.22484C2.51827 2.21984 3.83411 1.6665 5.23244 1.6665C6.63161 1.6665 7.94661 2.21984 8.93494 3.22484L9.99994 4.30817L11.0649 3.22484C12.0533 2.21984 13.3683 1.6665 14.7674 1.6665C16.1658 1.6665 17.4808 2.21984 18.4691 3.22484C20.5058 5.29484 20.5058 8.66317 18.4691 10.7332L10.2966 19.0423C10.2191 19.1215 10.1116 19.1665 9.99994 19.1665ZM5.23244 2.49984C4.05911 2.49984 2.95494 2.96567 2.12411 3.809C0.404941 5.55734 0.404941 8.4015 2.12411 10.1482L9.99994 18.1557L17.8758 10.149C19.5949 8.4015 19.5949 5.55734 17.8758 3.80984C17.0449 2.96567 15.9408 2.49984 14.7674 2.49984C13.5933 2.49984 12.4899 2.96567 11.6591 3.809L10.2966 5.194C10.1399 5.35317 9.85911 5.35317 9.70244 5.194L8.33994 3.809C7.50994 2.96567 6.40661 2.49984 5.23244 2.49984Z" fill="#171719" />
+        </svg>
+      </button>
+    </div>
+    <div class="card-body d-flex flex-cl a-item--center gap-10 mt-20">
+      <h3 class="h-2xs lg-h-xs">
+        {{ product.title | upcase }}
+      </h3>
+      {% if product.price != 0 %}
+        <p class="c-grey1 mb-10">
+          {{ product.price | money }}
+        </p>
+      {% else %}
+        <p class="mb-10">Vui lòng liên hệ</p>
+      {% endif %}
+      <form method="post" action="/cart/add">
+        <input
+          type="hidden"
+          name="id"
+          value="{{ product.variants.first.id }}" />
+        <input
+          type="submit"
+          value="Add to cart"
+          class="btn btn-secondary border-primary t-transf--uc padding-8-14 lg-padding-12-32" />
+      </form>
+    </div>
+  </div>
+</div>

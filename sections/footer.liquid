@@ -1,22 +1,22 @@
 <div class="container padding-block--0">
-  <div class="d-grid p-item--center border-bt-dark2 p-block--40 lg:p-block--50">
+  <div class="d-grid p-item--center border-bt-dark2 p-block--40 lg-p-block--50">
     {% if section.settings.logo != blank %}
       <img
-        class="logo-ft-size lg:logo-ft-size bg-style"
+        class="logo-ft-size lg-logo-ft-size bg-style"
         src="{{ section.settings.logo | image_url }}"
         alt="shop-logo">
     {% else %}
-      <span class="h1 c-secondary">{{ shop.name }}</span>
+      <span class="h-2xl h-md c-secondary">{{ shop.name }}</span>
     {% endif %}
   </div>
-  <div class="d-grid grid-1cl xs-1--column md-2--column lg-4--column gap-60 lg:gap-20 p-block--50 lg:padding-70">
-    {% for link in section.blocks %}
-      {% case link.type %}
+  <div class="d-grid grid-1cl xs-1--column md-2--column lg-4--column gap-60 lg-gap-20 p-block--50 lg-padding-70">
+    {% for blocks in section.blocks %}
+      {% case blocks.type %}
         {%- when 'search' -%}
         <div class="flex__item d-flex flex-cl gap-70">
-          {% form 'customer', id: 'ContactFooter', class: 'd-flex flex-cl gap-20 lg:gap-30' %}
-            <label class="h5 c-grey5">
-              {{ link.settings.title | upcase }}
+          {% form 'customer', id: 'ContactFooter', class: 'd-flex flex-cl gap-20 lg-gap-30' %}
+            <label class="h-2xs c-grey5 fw-400">
+              {{ blocks.settings.title | upcase }}
             </label>
             <div class="p-relative">
               <input
@@ -35,27 +35,27 @@
             </div>
           {% endform %}
 
-          {% if link.settings.hide == false %}
-            <div class="d-flex flex-cl gap-20 lg:gap-30">
-              <h3 class="h5 c-grey5 fw-400">{{ link.settings.social_title | upcase }}</h3>
+          {% if blocks.settings.hide == false %}
+            <div class="d-flex flex-cl gap-20 lg-gap-30">
+              <h3 class="h-2xs c-grey5 fw-400">{{ blocks.settings.social_title | upcase }}</h3>
               <ul class="d-flex a-item--center gap-15 l-style--none">
                 <li class="max-wh-20">
-                  <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ link.settings.facebook }}">
+                  <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ blocks.settings.facebook }}">
                     {% render 'icon-facebook' %}
                   </a>
                 </li>
                 <li class="max-wh-20">
-                  <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ link.settings.instagram }}">
+                  <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ blocks.settings.instagram }}">
                     {% render 'icon-instagram' %}
                   </a>
                 </li>
                 <li class="max-wh-20">
-                  <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ link.settings.linkin }}">
+                  <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ blocks.settings.linkin }}">
                     {% render 'icon-linkin' %}
                   </a>
                 </li>
                 <li class="max-wh-20">
-                  <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ link.settings.youtube }}">
+                  <a class="d-iblock wh-100 t-decor--none c-grey2" href="{{ blocks.settings.youtube }}">
                     {% render 'icon-youtube' %}
                   </a>
                 </li>
@@ -66,10 +66,10 @@
 
         {%- when 'link_list' -%}
         <div class="flex__item">
-          <div class="d-flex flex-cl gap-20 lg:gap-30">
-            <h3 class="h5 c-grey5 fw-400">{{ link.settings.title | upcase }}</h3>
+          <div class="d-flex flex-cl gap-20 lg-gap-30">
+            <h3 class="h-2xs c-grey5 fw-400">{{ blocks.settings.title | upcase }}</h3>
             <ul class="d-flex flex-cl gap-15 l-style--none">
-              {% for link in link.settings.footer_menu.links %}
+              {% for link in blocks.settings.footer_menu.links %}
                 <li>
                   {% assign linkContent = link.title %}
                   {% assign linkUrl = link.url %}
@@ -81,11 +81,11 @@
         </div>
 
         {%- when 'text' -%}
-        <div class="flex__item lg:max-width-281">
-          <div class="d-flex flex-cl gap-20 lg:gap-30">
-            <h3 class="h5 c-grey5 fw-400">{{ link.settings.title | upcase }}:</h3>
+        <div class="flex__item lg-max-width-281">
+          <div class="d-flex flex-cl gap-20 lg-gap-30">
+            <h3 class="h-2xs c-grey5 fw-400">{{ blocks.settings.title | upcase }}:</h3>
             <div class="d-flex flex-cl gap-15 l-style--none c-grey2">
-              {{ link.settings.info_text }}
+              {{ blocks.settings.info_text }}
             </div>
           </div>
         </div>

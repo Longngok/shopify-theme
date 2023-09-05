@@ -1,8 +1,8 @@
 <div class="container container__padding">
-  <div class="d-flex flex-cl gap-70 lg:gap-100">
+  <div class="d-flex flex-cl gap-70 lg-gap-100">
     {% for row in section.blocks %}
 
-      <div class="d-grid xs-1--column lg-2--column lg:a-item--center gap-30 lg:gap-100">
+      <div class="d-grid xs-1--column lg-2--column lg-a-item--center gap-30 lg-gap-100">
         <div class="wh-100 {{ row.settings.img_aligment }}">
           {% if row.settings.img != blank %}
             {%- liquid
@@ -10,7 +10,7 @@
                 render 'image', main_img: main_img 
               -%}
           {% else %}
-            {{ 'product-1' | placeholder_svg_tag: 'card-img lg:max-wh-50 width-100 ' }}
+            {{ 'product-1' | placeholder_svg_tag: 'card-img lg-max-wh-50 width-100 ' }}
           {% endif %}
         </div>
         <div class="card-body">
@@ -42,7 +42,7 @@
               </defs>
             </svg>
           {% endif %}
-          <h3 class="h1 mb-25">
+          <h3 class="h-2xl h-md mb-25">
             {{ row.settings.title | upcase }}
           </h3>
           <p>
@@ -81,14 +81,14 @@
             "label": "Image aligment",
             "options": [
               {
-                "value": "lg:order-1",
+                "value": "lg-order-1",
                 "label": "Left"
               }, {
-                "value": "lg:order-2",
+                "value": "lg-order-2",
                 "label": "Right"
               }
             ],
-            "default": "lg:order-1"
+            "default": "lg-order-1"
           },
           {
             "type": "html",

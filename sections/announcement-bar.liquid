@@ -1,18 +1,12 @@
-{% style %}
-  .select-remove option:first-child {
-    display: none
-  }
-{% endstyle %}
-
-<div class="d-grid layout__annoucement gap-15 bc-primary padding-13-15 lg:padding-13-50">
-  <div class="grid__item lg:t-align--center">
-    <span class="h5 c-secondary">
+<div class="d-grid layout__annoucement gap-15 bc-primary padding-13-15 lg-padding-13-50">
+  <div class="grid__item lg-grid__col--23 lg-t-align--center">
+    <span class="c-secondary l-spacing">
       {{ section.settings.text_announcement | upcase }}
     </span>
   </div>
   {% if section.settings.hide != true %}
     <div class="grid__item j-content--end d-flex a-item--center gap-8 {{ section.settings.select_position }}">
-      <select class="h5 fw-400 cus-select c-secondary btn-link btn-border--none header-select truncate-text select-remove" id="countrySelect">
+      <select class="cus-select c-secondary btn-link btn-border--none header-select truncate-text select-remove l-spacing" id="countrySelect">
         {{ all_country_option_tags }}
       </select>
       <svg

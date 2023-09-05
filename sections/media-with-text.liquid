@@ -1,22 +1,3 @@
-{% style %}
-  .mb_title {
-    margin-bottom: {{ section.settings.title_mb | append :'rem' }}
-  }
-
-  .mb_des {
-    margin-bottom: {{ section.settings.des_mb | append : 'rem'  }}
-  }
-
-  @media(min-width: 992px) {
-    .lg_mb_title {
-      margin-bottom: {{ section.settings.lg_title_mb |append : 'rem' }}
-    }
-    .lg_mb_des {
-      margin-bottom: {{ section.settings.lg_des_mb | append : 'rem' }}
-    }
-  }
-{% endstyle %}
-
 <div class="container d-grid xs-1--column lg-2--column">
   <div class="{{ section.settings.img_aligment }}">
     {% if section.settings.img_video == "video" %}
@@ -47,11 +28,11 @@
       {% endif %}
     {% endif %}
   </div>
-  <div class="content-wrapper bc-grey0 padding-60-30 lg:padding-133-90">
-    <h2 class="h1 mb_title lg_mb_title">
+  <div class="content-wrapper bc-grey0 padding-60-30 lg-padding-133-90">
+    <h2 class="h-2xl h-md sm-title__mb lg-title__mb" style="--sm-mb: {{ section.settings.title_mb | append :'rem' }}; --lg-mb: {{ section.settings.lg_title_mb |append : 'rem' }}">
       {{ section.settings.heading | upcase }}
     </h2>
-    <p class="c-grey2 mb_des lg_mb_des">
+    <p class="c-grey2 content__mb lg-content__mb" style="--mb-content: {{ section.settings.des_mb | append : 'rem' }}; --lg-content-mb: {{ section.settings.lg_des_mb | append : 'rem' }}">
       {{ section.settings.description }}
     </p>
 
@@ -117,14 +98,14 @@
         "label": "Image aligment",
         "options": [
           {
-            "value": "lg:order-1",
+            "value": "lg-order-1",
             "label": "Left"
           }, {
-            "value": "lg:order-2",
+            "value": "lg-order-2",
             "label": "Right"
           }
         ],
-        "default": "lg:order-2"
+        "default": "lg-order-2"
       },
       {
         "type": "image_picker",

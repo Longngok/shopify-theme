@@ -1,32 +1,11 @@
-{% style %}
-  .img__mb {
-    margin-bottom: {{ section.settings.mb_img | append : 'rem' }}
-    ;
-  }
-  .title__mb {
-    margin-bottom: {{ section.settings.mb_title | append : 'rem' }}
-  }
-  .des__mb {
-    margin-bottom: {{ section.settings.mb_des | append : 'rem' }}
-  }
-
-  .sm-mc__mb-header {
-    margin-bottom: {{ section.settings.sm-mc__header-mb | append : 'rem' }}
-  }
-  @media(min-width: 992px) {
-    .lg-mc__mb-header {
-      margin-bottom: {{ section.settings.lg-mc__header-mb | append : 'rem' }}
-    }
-  }
-{% endstyle %}
 <div class="{{ section.settings.background }}">
   <div class="container container__padding">
     <div class="t-align--center">
-      <h2 class="h1 sm-mc__mb-header lg-mc__mb-header">
+      <h2 class="h-2xl h-md sm-title__mb lg-title__mb" style="--sm-mb: {{ section.settings.sm-mc__header-mb | append : 'rem' }}; --lg-mb: {{ section.settings.lg-mc__header-mb | append : 'rem' }}">
         {{ section.settings.title | upcase }}
       </h2>
       {% if section.settings.description != blank %}
-        <div class="c-grey2 mb-30 lg:mb-50">
+        <div class="c-grey2 mb-30 lg-mb-50">
           <span>
             {{ section.settings.description }}
           </span>
@@ -40,11 +19,11 @@
       {% for column in section.blocks %}
         {% if column.settings.background == "bc-grey0" %}
           <div class="grid__item">
-            <div class="card d-grid p-item--center bc-secondary padding-20-50 lg:padding-50-20">
-              <div class="img__mb">
+            <div class="card d-grid p-item--center bc-secondary padding-20-50 lg-padding-50-20">
+              <div class="box-img__mb" style="--img-mb: {{ section.settings.mb_img | append : 'rem' }}">
                 {% if column.settings.box_img != blank %}
                   <img
-                    class="wh-40"
+                    class="width-40"
                     src="{{ column.settings.box_img | image_url }}"
                     alt="{{ column.settings.box_img.alt }}">
                 {% else %}
@@ -52,14 +31,14 @@
                 {% endif %}
               </div>
               <div class="card-body t-align--center d-flex flex-cl a-item--center">
-                <h3 class="h4 title__mb">
+                <h3 class="h-xs box-title__mb" style="--box-title-mb: {{ section.settings.mb_title | append : 'rem' }}">
                   {{ column.settings.box_heading | upcase }}
                 </h3>
-                <p class="c-grey2 des__mb">
+                <p class="c-grey2 content__mb" style="--mb-content: {{ section.settings.mb_des | append : 'rem' }}">
                   {{ column.settings.box_description }}
                 </p>
                 <a class="t-decor--none d-flex gap-10 a-item--center" href="#">
-                  <span class="h5 c-primary l-spacing">
+                  <span class="c-primary l-spacing">
                     {{ column.settings.button | upcase }}
                   </span>
                   {% render 'icon-transfer' style"c-primary" %}
@@ -69,11 +48,11 @@
           </div>
         {% else %}
           <div class="grid__item">
-            <div class="card d-grid p-item--center bc-secondary padding-20-50 lg:padding-50-20 border-grey6">
-              <div class="img__mb">
+            <div class="card d-grid p-item--center bc-secondary padding-20-50 lg-padding-50-20 border-grey6">
+              <div class="box-img__mb" style="--img-mb: {{ section.settings.mb_img | append : 'rem' }}">
                 {% if column.settings.box_img != blank %}
                   <img
-                    class="wh-40"
+                    class="width-40"
                     src="{{ column.settings.box_img | image_url }}"
                     alt="{{ column.settings.box_img.alt }}">
                 {% else %}
@@ -81,15 +60,15 @@
                 {% endif %}
               </div>
               <div class="card-body t-align--center d-flex flex-cl a-item--center">
-                <h3 class="h4 title__mb">
+                <h3 class="h-xs box-title__mb" style="--box-title-mb: {{ section.settings.mb_title | append : 'rem' }}">
                   {{ column.settings.box_heading | upcase }}
                 </h3>
-                <p class="c-grey2 des__mb">
+                <p class="c-grey2 content__mb" style="--mb-content: {{ section.settings.mb_des | append : 'rem' }}">
                   {{ column.settings.box_description }}
                 </p>
                 {% if column.settings.button != blank %}
                   <a class="t-decor--none d-flex gap-10 a-item--center" href="{{ column.settings.box-link }}">
-                    <span class="h5 c-primary l-spacing">
+                    <span class="c-primary l-spacing">
                       {{ column.settings.button | upcase }}
                     </span>
                     {% render 'icon-next-dark' %}
@@ -102,8 +81,8 @@
       {% endfor %}
     </div>
     {% if section.settings.hide == false %}
-      <div class="t-align--center mt-40 lg:mt-80">
-        <h3 class="h5 fs-16 mb-15">
+      <div class="t-align--center mt-40 lg-mt-80">
+        <h3 class="h-xs mb-15">
           {{ section.settings.additional_title | upcase }}
         </h3>
         <div class="c-grey2">

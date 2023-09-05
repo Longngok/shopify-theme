@@ -8,8 +8,8 @@
           {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg banner-img bg-style' }}
         {% endif %}
         <div class="container">
-          <div class="p-absolute bottom-15 lg:bottom-50">
-            <h1 class="h1 fs-18 c-secondary mb-15 lg:mb-20">
+          <div class="p-absolute bottom-15 lg-bottom-50">
+            <h1 class="h-2xl h-sm c-secondary mb-15 lg-mb-20">
               {{ block.settings.heading | upcase }}
             </h1>
             {% if block.settings.button_label != blank %}
@@ -24,10 +24,10 @@
       </div>
     {% endfor %}
   </div>
-  <button class="btn btn-link btn-border--none btn-prev max-wh-25 p-absolute top-50pc left-15 lg:left-50 btn-prev">
+  <button class="btn btn-link btn-border--none btn-prev max-wh-25 p-absolute top-50pc left-15 lg-left-50 btn-prev">
     {% render 'icon-prev' %}
   </button>
-  <button class="btn btn-link btn-border--none btn-next max-wh-25 p-absolute top-50pc right-15 lg:right-50 ">
+  <button class="btn btn-link btn-border--none btn-next max-wh-25 p-absolute top-50pc right-15 lg-right-50 ">
     {% render 'icon-next' %}
   </button>
 </div>

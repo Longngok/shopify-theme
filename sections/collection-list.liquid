@@ -1,24 +1,10 @@
-<div class="container container__padding">
-  <h2 class="h1 t-align--center mb-25 lg:mb-45">
+<div class="container">
+  <h2 class="h-2xl h-md t-align--center mb-25 lg-mb-45">
     {{ section.settings.heading | upcase }}
   </h2>
-  <div class="d-grid xs-2--column lg-4--column gap-15 lg:gap-20">
+  <div class="d-grid xs-2--column lg-4--column gap-15 lg-gap-20">
     {% for collection in collections -%}
-      <div class="d-grid__item rectangle__narrow width-100">
-        <div class="p-relative wh-100">
-          {%- liquid
-            assign main_img = collection.featured_image
-            render 'image', main_img: main_img
-          -%}
-          <div class="d-grid p-item--center p-absolute left-0 right-0 bottom-10 lg:bottom-30">
-            {%- liquid
-              assign content = collection.title | upcase
-              assign Link = collection.url
-            -%}
-            {{ content | link_to: Link, class: 'btn btn-secondary btn-border--none p-block--13 max-width-125 width-100 t-decor--none t-align--center' }}
-          </div>
-        </div>
-      </div>
+      {% render 'list-collection', collection: collection %}
     {% endfor %}
   </div>
 </div>

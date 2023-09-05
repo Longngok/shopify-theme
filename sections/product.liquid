@@ -1,16 +1,16 @@
 <div class="container container__padding">
   {% render 'breadcrumb' %}
-  <div class="d-grid grid-1cl xs-1--column lg-2--column gap-40 md:gap-60 lg:gap-101">
+  <div class="d-grid grid-1cl xs-1--column lg-2--column gap-40 md-gap-60 lg-gap-101">
     <div class="grid-item">
       <div class="product-detail">
-        <div class="image-container mb-15 lg:mb-20">
+        <div class="image-container mb-15 lg-mb-20">
           <img
             class="wh-100 bg-style"
             id="large-image"
             src="{{ product.featured_image | image_url }}"
             alt="{{ product.featured_image.alt }}">
         </div>
-        <div class="d-flex j-content--center a-item--center gap-13 lg:gap20 p-relative">
+        <div class="d-flex j-content--center a-item--center gap-13 lg-gap20 p-relative">
           {% for image in product.images %}
             <img
               class="thumbnail rectangle__wide cursor-pointer wh-100 bg-style"
@@ -52,28 +52,29 @@
       </div>
     </div>
     <div class="grid-item">
-      <h1 class="h1 mb-10">
-        {{ product.title | upcase }}</h1>
-      <span class="h1 d-iblock mb-30 lg:mb-50 c-grey1">
+      <h2 class="h-2xl h-md mb-10">
+        {{ product.title | upcase }}
+      </h2>
+      <span class="h-2xl h-md d-iblock mb-30 lg-mb-50 c-grey1">
         {{ product.price | money }}
       </span>
       <form method="post" action="/cart/add">
-        <div class="d-flex flex-cl gap-20 mb-30 lg:mb-40">
-          <label class="d-flex j-content--sb">
-            <span class="h4 t-transf--uc" style="line-height: normal;">Size</span>
-            <span class="c-grey2 d-flex a-item--center gap-10">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none">
-                <path d="M19.8747 5.24473L14.7553 0.125308C14.5882 -0.0417693 14.3183 -0.0417693 14.1512 0.125308L0.125308 14.1512C-0.0417693 14.3183 -0.0417693 14.5882 0.125308 14.7553L5.24473 19.8747C5.4118 20.0418 5.6817 20.0418 5.84877 19.8747L19.8747 5.84877C20.0418 5.6817 20.0418 5.4118 19.8747 5.24473ZM5.54461 18.9665L1.03352 14.4554L4.42219 11.0667L5.96016 12.6047C6.12295 12.7761 6.39713 12.7803 6.56421 12.6133C6.73557 12.4505 6.73985 12.1763 6.57277 12.0092C6.56849 12.0049 6.56849 12.0049 6.56421 12.0006L5.02624 10.467L6.14437 9.34883L8.54343 11.7479C8.71051 11.915 8.98468 11.915 9.14748 11.7436C9.31455 11.5765 9.31455 11.3066 9.14748 11.1396L6.74842 8.74049L7.86655 7.62236L9.40452 9.15605C9.5716 9.32312 9.84149 9.32312 10.0086 9.15605C10.1756 8.98897 10.1756 8.71907 10.0086 8.552L8.4706 7.01831L9.58873 5.90018L11.9878 8.29924C12.1549 8.46632 12.4248 8.46632 12.5918 8.29924C12.7589 8.13216 12.7589 7.86227 12.5918 7.69519L10.1928 5.29613L11.3109 4.178L12.8489 5.71597C13.016 5.88305 13.2859 5.88733 13.4529 5.72025C13.62 5.55317 13.6243 5.28328 13.4572 5.1162C13.4572 5.1162 13.4572 5.1162 13.4529 5.11192L11.9278 3.5611L13.0459 2.44297L15.445 4.84203C15.6121 5.0091 15.882 5.0091 16.0491 4.84203C16.2161 4.67495 16.2161 4.40505 16.0491 4.23798L13.65 1.83892L14.4554 1.03352L18.9665 5.54461L5.54461 18.9665Z" fill="#84848E" />
-              </svg>
-              Find your size
-            </span>
-          </label>
-          {% if product.variants != blank %}
+        {% if product.variants.size > 1 %}
+          <div class="d-flex flex-cl gap-20 mb-30 lg-mb-40">
+            <label class="d-flex j-content--sb">
+              <span class="h-xs t-transf--uc" style="line-height: normal;">Size</span>
+              <span class="c-grey2 d-flex a-item--center gap-10">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none">
+                  <path d="M19.8747 5.24473L14.7553 0.125308C14.5882 -0.0417693 14.3183 -0.0417693 14.1512 0.125308L0.125308 14.1512C-0.0417693 14.3183 -0.0417693 14.5882 0.125308 14.7553L5.24473 19.8747C5.4118 20.0418 5.6817 20.0418 5.84877 19.8747L19.8747 5.84877C20.0418 5.6817 20.0418 5.4118 19.8747 5.24473ZM5.54461 18.9665L1.03352 14.4554L4.42219 11.0667L5.96016 12.6047C6.12295 12.7761 6.39713 12.7803 6.56421 12.6133C6.73557 12.4505 6.73985 12.1763 6.57277 12.0092C6.56849 12.0049 6.56849 12.0049 6.56421 12.0006L5.02624 10.467L6.14437 9.34883L8.54343 11.7479C8.71051 11.915 8.98468 11.915 9.14748 11.7436C9.31455 11.5765 9.31455 11.3066 9.14748 11.1396L6.74842 8.74049L7.86655 7.62236L9.40452 9.15605C9.5716 9.32312 9.84149 9.32312 10.0086 9.15605C10.1756 8.98897 10.1756 8.71907 10.0086 8.552L8.4706 7.01831L9.58873 5.90018L11.9878 8.29924C12.1549 8.46632 12.4248 8.46632 12.5918 8.29924C12.7589 8.13216 12.7589 7.86227 12.5918 7.69519L10.1928 5.29613L11.3109 4.178L12.8489 5.71597C13.016 5.88305 13.2859 5.88733 13.4529 5.72025C13.62 5.55317 13.6243 5.28328 13.4572 5.1162C13.4572 5.1162 13.4572 5.1162 13.4529 5.11192L11.9278 3.5611L13.0459 2.44297L15.445 4.84203C15.6121 5.0091 15.882 5.0091 16.0491 4.84203C16.2161 4.67495 16.2161 4.40505 16.0491 4.23798L13.65 1.83892L14.4554 1.03352L18.9665 5.54461L5.54461 18.9665Z" fill="#84848E" />
+                </svg>
+                Find your size
+              </span>
+            </label>
             <div class="p-relative">
               <select class="padding-18-20 border-grey6 cus-select width-100">
                 {% for variants in product.variants %}
@@ -94,11 +95,11 @@
                   stroke-linejoin="round" />
               </svg>
             </div>
-          {% endif %}
-        </div>
+          </div>
+        {% endif %}
         <div class="d-grid layout__product-dt gap-15">
-          <div class="grid-item">
-            <div class="quantity-button d-flex border-grey6 height-100 lg:max-width-150">
+          <div class="grid-item xs-grid__col--14 lg-grid__col--12">
+            <div class="quantity-button d-flex border-grey6 height-100 lg-max-width-150">
               <button class="minus-btn btn btn-link btn-border--none padding-11-18" onclick="decreaseQuantity(event)">-</button>
               <input
                 class="p quantity-input t-align--center btn-border--none padding-11-auto width-100"
@@ -108,7 +109,7 @@
               <button class="plus-btn btn btn-link btn-border--none padding-11-18" onclick="increaseQuantity(event)">+</button>
             </div>
           </div>
-          <div class="grid-item">
+          <div class="grid-item xs-grid__col--13 lg-grid__col--23">
             <input
               type="hidden"
               name="id"
@@ -118,7 +119,7 @@
               value="Add to cart"
               class="btn btn-secondary border-grey6 p-block--13 t-transf--uc wh-100" />
           </div>
-          <div class="grid-item">
+          <div class="grid-item lg-grid__col--34">
             <button class="btn btn-secondary border-grey6 padding-15 height-52">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +133,7 @@
           </div>
         </form>
         <form
-          class="grid-item"
+          class="grid-item xs-grid__col--14 lg-grid__col--14"
           action="/cart/checkout/{{ product.variants.first.id }}"
           method="post">
           <input
@@ -142,13 +143,13 @@
           <button type="submit" class="btn btn-primary border-grey6 padding-13-15 t-align--center t-decor--none t-transf--uc width-100">Buy Now</button>
         </form>
       </div>
-      <span class="l-spacing d-none lg:d-iblock padding-7-18 mb-50 bc-grey0 lg:mt-30">
+      <span class="l-spacing d-none lg-d-iblock padding-7-18 mb-50 bc-grey0 lg-mt-30">
         {{ section.settings.title }}
       </span>
-      <p class="c-grey2 mt-30 lg:mt-0 mb-40">
+      <p class="c-grey2 mt-30 lg-mt-0 mb-40">
         {{ product.description }}
       </p>
-      <h2 class="h5 fs-16 mb-40">
+      <h2 class="h-xs mb-40">
         {{ section.settings.gift_title | upcase }}
       </h2>
       {% if section.settings.img != blank %}

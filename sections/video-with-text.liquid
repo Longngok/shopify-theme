@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="video-wrapper p-relative mb-30 lg:mb-50">
+  <div class="video-wrapper p-relative mb-30 lg-mb-50">
     {% if section.settings.img != blank %}
       <img
         class="wh-100"
         src="{{ section.settings.img | image_url }}"
-        alt="">
+        alt="{{ section.settings.img.alt }}">
     {% else %}
       {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg wh-100' }}
     {% endif %}
@@ -27,7 +27,7 @@
       </svg>
     </button>
   </div>
-  <h2 class="h1 mb-25 t-align--center">
+  <h2 class="h-2xl h-md mb-25 t-align--center">
     {{ section.settings.title | upcase }}
   </h2>
   <p class="c-grey2 t-align--center">

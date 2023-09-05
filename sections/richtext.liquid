@@ -1,55 +1,19 @@
-{% style %}
-  {% if section.settings.background != blank %}
-    .bg-img {
-      background-image: url('{{ section.settings.background | image_url }}');
-    }
-  {% endif %}
-  .richtext__padding {
-    padding: {{ section.settings.sm_padding | append: 'rem' }}
-    var(--ctph);
-  }
-  .sm-richtext__font-size {
-    font-size: {{ section.settings.sm_font-size | append: 'rem' }}
-  }
-
-  .sm-richtext__title-mb {
-    margin-bottom: {{ section.settings.sm_title_mb | append: 'rem' }}
-  }
-
-  .richtex__content-mb {
-    margin-bottom: {{ section.settings.content_mb | append: 'rem' }}
-  }
-  @media(min-width: 769px) {
-    .lg-richtext__title-mb {
-      margin-bottom: {{ section.settings.lg_title_mb | append: 'rem'  }}
-    }
-    .lg-richtext__padding {
-      padding: {{ section.settings.lg_padding | append: 'rem' }}
-      var(--ctph);
-    }
-    .lg-richtext__font-size {
-      font-size: {{ section.settings.lg_font-size | append: 'rem'  }}
-    }
-  }
-{% endstyle %}
-
-
-<div class="bg-img bg-style" style="background-color: black;">
-  <div class="container richtext__padding lg-richtext__padding {{ section.settings.content_position }}">
-    <h2 class="sm-richtext__font-size lg-richtext__font-size sm-richtext__title-mb lg-richtext__title-mb c-secondary">
+<div class="bg-img bg-style" style="background-color: black; --bg-img: url('{{ section.settings.background | image_url }}')">
+  <div class="container sm-padding lg-padding {{ section.settings.content_position }}" style="--sm-padding: {{ section.settings.sm_padding | append: 'rem' }}; --lg-padding: {{ section.settings.lg_padding | append: 'rem' }}">
+    <h2 class="sm-fs lg-fs sm-title__mb lg-title__mb c-secondary" style="--sm-mb: {{ section.settings.sm_title_mb | append: 'rem' }}; --lg-mb: {{ section.settings.lg_title_mb | append: 'rem' }}; --sm-fs: {{ section.settings.sm_font-size | append: 'rem' }}; --lg-fs: {{ section.settings.lg_font-size | append: 'rem' }}">
       {{ section.settings.title | upcase }}
     </h2>
     {% if section.settings.content_position == 't-align--start' %}
       {% assign desMaxwidth = 'max-width--327' %}
     {% endif %}
-    <p class="c-grey2 richtex__content-mb {{ desMaxwidth }}">
+    <p class="c-grey2 content__mb {{ desMaxwidth }}" style="--mb-content: {{ section.settings.content_mb | append: 'rem' }};">
       {{ section.settings.description }}
     </p>
     <div>
       {% if section.settings.btn_showhide == false %}
         {% if section.settings.btn_alignment == "btn1" %}
           <a class="t-decor--none a-item--center" href="{{ section.settings.link }}">
-            <span class="h5 c-secondary mr-10">
+            <span class="c-secondary mr-10">
               {{ section.settings.btn_label | upcase }}
             </span>
             {% render 'icon-transfer' %}

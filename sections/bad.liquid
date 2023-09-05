@@ -1,6 +1,6 @@
 <div class="container container__padding">
-  <div class="mb-50 lg:mb-100">
-    <h2 class="h1 t-align--center mb-20 lg:mb-15">
+  <div class="mb-50 lg-mb-100">
+    <h2 class="h-2xl h-md t-align--center mb-20 lg-mb-15">
       {{ section.settings.title | upcase }}
     </h2>
     <p class="c-grey2 t-align--center">
@@ -9,10 +9,10 @@
   </div>
   {% form 'contact' %}
     {{ form.errors | default_errors }}
-    <div class="d-grid layout__bad lg-2--column gap-40 lg:cl-gap-19 mb-40 lg:mb-50">
+    <div class="d-grid layout__bad lg-2--column gap-40 lg-cl-gap-19 mb-40 lg-mb-50">
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 t-transf--uc">title</label>
+          <label class="h-xs t-transf--uc">title</label>
           <div class="p-relative">
             <select
               name="contact[title]"
@@ -39,7 +39,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 t-transf--uc required">sur name</label>
+          <label class="h-xs t-transf--uc required">sur name</label>
           <div class="p-relative input-box">
             <input
               id="surname"
@@ -53,7 +53,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 t-transf--uc required">first name</label>
+          <label class="h-xs t-transf--uc required">first name</label>
           <div class="p-relative input-box">
             <input
               id="firstname"
@@ -67,7 +67,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 t-transf--uc required">email</label>
+          <label class="h-xs t-transf--uc required">email</label>
           <div class="p-relative input-box">
             <input
               id="email"
@@ -81,7 +81,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 t-transf--uc">phone</label>
+          <label class="h-xs t-transf--uc">phone</label>
           <div class="p-relative input-box">
             <input
               id="phone"
@@ -96,7 +96,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 t-transf--uc">city</label>
+          <label class="h-xs t-transf--uc">city</label>
           <div class="p-relative input-box">
             <input
               id="city"
@@ -110,7 +110,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 t-transf--uc">company</label>
+          <label class="h-xs t-transf--uc">company</label>
           <div class="p-relative input-box">
             <input
               id="company"
@@ -124,7 +124,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 t-transf--uc">province</label>
+          <label class="h-xs t-transf--uc">province</label>
           <div class="p-relative">
             <select
               name="contact[province]"
@@ -151,7 +151,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 t-transf--uc">vat number</label>
+          <label class="h-xs t-transf--uc">vat number</label>
           <div class="p-relative input-box">
             <input
               id="Vatnumber"
@@ -165,7 +165,7 @@
       </div>
       <div class="grid-item">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 t-transf--uc">request</label>
+          <label class="h-xs t-transf--uc">request</label>
           <div class="p-relative">
             <select
               name="contact[request]"
@@ -190,9 +190,9 @@
           </div>
         </div>
       </div>
-      <div class="grid-item grid-item__message">
+      <div class="grid-item lg-grid__col--13">
         <div class="d-flex flex-cl gap-11">
-          <label class="h4 t-transf--uc">message</label>
+          <label class="h-xs t-transf--uc">message</label>
           <div class="p-relative input-box">
             <textarea
               name="contact[message]"
@@ -205,15 +205,15 @@
         </div>
       </div>
     </div>
-    <div class="d-flex flex-cl gap-20 mb-40 lg:mb-50">
-      <div class="d-flex gap-20 lg:a-item--center">
+    <div class="d-flex flex-cl gap-20 mb-40 lg-mb-50">
+      <div class="d-flex gap-20 lg-a-item--center">
         <input
           id="exclusive-offers"
           class="wh-24 border-grey6 cus-select"
           type="checkbox">
         <label for="exclusive-offers">I agree to receive communications regarding exclusive offers, services and news</label>
       </div>
-      <div class="d-flex gap-20 lg:a-item--center">
+      <div class="d-flex gap-20 lg-a-item--center">
         <input
           id="privacy-policy"
           class="wh-24 border-grey6 cus-select"

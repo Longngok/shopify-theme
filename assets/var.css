@@ -15,11 +15,13 @@
   --color-grey6: #ECECEC;
 
   --root-font-size: 1rem;
-  --heading-ex-small: calc(1.4 * var(--root-font-size));
-  --heading-small: calc(1.6 * var(--root-font-size));
-  --heading-medium: calc(2 * var(--root-font-size));
-  --heading-large: calc(2.4 * var(--root-font-size));
-  --heading-ex-large: calc(3 * var(--root-font-size));
+  --heading-2xs: calc(1.4 * var(--root-font-size));
+  --heading-xs: calc(1.6 * var(--root-font-size));
+  --heading-sm: calc(1.8 * var(--root-font-size));
+  --heading-md: calc(2 * var(--root-font-size));
+  --heading-lg: calc(2.2 * var(--root-font-size));
+  --heading-xl: calc(2.4 * var(--root-font-size));
+  --heading-2xl: calc(3 * var(--root-font-size));
 
   --body-text: calc(1.4 * var(--root-font-size));
 

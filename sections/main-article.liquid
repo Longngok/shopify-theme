@@ -4,7 +4,7 @@
       class="width-100 mb-40"
       src="{{ article.image | image_url }}"
       alt="{{ article.image.alt }}">
-    <h1 class="h1 mb-40">{{ article.title | upcase }}</h1>
+    <h1 class="h-2xl h-md mb-40">{{ article.title | upcase }}</h1>
     <time class="c-grey2 mb-40 d-block">{{ article.published_at | date: " %b %d, %Y" }}</time>
     <div class="mb-40">
       <p>{{ article.content }}</p>

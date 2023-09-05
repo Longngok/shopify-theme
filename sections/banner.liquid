@@ -1,23 +1,18 @@
-{% style %}
-  .bg-img {
-    background-image: url('{{ section.settings.background | image_url }}');
-  }
-{% endstyle %}
-
-<div class="container p-block--30 lg:p-block--151">
-  <h1 class="h1 c-secondary mb-5">
-    {{ collection.title | upcase }}
-  </h1>
-  <p class="c-grey2 width-50pc lg:width-40pc">
-    {{ collection.description }}
-  </p>
+<div class="bg-img bg-style" style="background-color: black; --bg-img: url('{{ section.settings.background | image_url }}'">
+  <div class="container p-block--30 lg-p-block--151">
+    <h1 class="h-sm h-2xl c-secondary mb-5">
+      {{ collection.title | upcase }}
+    </h1>
+    <p class="c-grey2 width-50pc lg-width-40pc">
+      {{ collection.description }}
+    </p>
+  </div>
 </div>
 
 {% schema %}
   {
     "name": "Banner",
     "tag": "section",
-    "class": "bg-img bg-style bc-primary",
     "settings": [
       {
         "type": "image_picker",

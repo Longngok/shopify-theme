@@ -1,12 +1,12 @@
 <div class="container p-relative container__padding" style="overflow: hidden;">
-  <div class="d-flex lg:j-content--center gap-40 p-block--13 lg:padding-0 scroll mb-37 lg:mb-60">
+  <div class="d-flex lg-j-content--center gap-40 p-block--13 lg-padding-0 scroll mb-37 lg-mb-60">
     {% for fqa in section.blocks %}
-      <button class="btn btn-link btn-success flex-item fs-18 active-btn firstButton" onclick="toggleFAQChange(this, {{ forloop.index0 }})">
+      <button class="btn btn-link btn-success flex-item h-md h-lg active-btn firstButton ffamily-1" onclick="toggleFAQChange(this, {{ forloop.index0 }})">
         {{ fqa.settings.tab_title | upcase }}
       </button>
     {% endfor %}
   </div>
-  <div class="FAQ-container mb-60 lg:mb-100">
+  <div class="FAQ-container mb-60 lg-mb-100">
     {% for fqa in section.blocks %}
       <div class="FAQ-change" data-faq="{{ forloop.index0 }}">
         {% for i in (1..5) %}
@@ -15,7 +15,7 @@
           {% if fqa.settings[quesContent] != blank %}
             <div class="boder-bt--grey3 change-menu" onclick="toggleDropdown(this)">
               <div class="d-flex j-content--sb gap-30 p-block--20">
-                <h3 class="h4 cursor-pointer" onclick="toggleDropdown(this)">
+                <h3 class="h-xs cursor-pointer" onclick="toggleDropdown(this)">
                   {{ fqa.settings[quesTitle] }}
                 </h3>
                 <button class="btn btn-link btn-border--none" onclick="toggleDropdown(this)">
@@ -42,7 +42,7 @@
                 </button>
               </div>
               <div class="dropdown">
-                <p class="mb-30 lg:mb-40">
+                <p class="mb-30 lg-mb-40">
                   {{ fqa.settings[quesContent] }}
                 </p>
               </div>
@@ -53,10 +53,10 @@
     {% endfor %}
   </div>
   <div class="t-align--center">
-    <span class="h3">
+    <span class="h-md">
       {{ section.settings.additional_content }}
     </span>
-    <a class="h3 c-primary" href="{{ section.settings.link }}">
+    <a class="h-md c-primary" href="{{ section.settings.link }}">
       {{ section.settings.additional_link }}
     </a>
   </div>
